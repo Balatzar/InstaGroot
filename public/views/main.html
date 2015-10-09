@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<ul>
+	<li ng-repeat="todo in todos">{{todo.description}}
+      <button ng-click="rm(todo)">delete</button>
+    </li>
+</ul>
+<form ng-submit="add()">
+  <input type="text" ng-model="message" placeholder="truc">
+  <button type="submit">post</button>
+</form>
+<a href="#/signup">s'inscrire</a>
