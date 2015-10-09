@@ -1,5 +1,5 @@
 // USER SERVICE
-function userSerive($http) {
+function userService($http) {
   return {
     create: function(data) {
       $http.post('/users', data);
