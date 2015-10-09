@@ -15,4 +15,12 @@ module.exports = function(app) {
       res.sendStatus(200);
     })
   });
+
+	app.get('/users/:id', function(req, res) {
+		User.find({
+			_id: req.params.id
+		},function (err, data) {
+			res.json(data); 
+		});
+	});
 }

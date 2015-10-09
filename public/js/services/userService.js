@@ -2,7 +2,10 @@
 function userService($http) {
   return {
     create: function(data) {
-      $http.post('/users', data);
-    }
+      return $http.post('/users', data);
+    },
+    get : function() {
+        return $http.get('/users');
+    },
   }
 }

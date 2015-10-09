@@ -22,6 +22,7 @@ angular.module('app', ['ngRoute'])
     .controller('mainController', mainController)
     .controller('signupController', signupController)
     .service('todoService', todoService)
+    .service('userService', userService)
     /*.factory('', )*/
     .run(run);
 

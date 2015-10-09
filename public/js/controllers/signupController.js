@@ -1,5 +1,11 @@
 // SIGNUP CONTROLLER
 function signupController($scope, $http, userService) {
+
+	function load(){
+		userService.get().then(function(res){
+			$scope.users = res.data;
+		});
+	}
   
   $scope.signup = function() {
     if (!$scope.username || $scope.username === "") { return }
@@ -11,7 +17,9 @@ function signupController($scope, $http, userService) {
     data.password = $scope.password;
     data.age = $scope.age;
     
-    userService.create(data);
+    userService.create(data).then(function(res){
+          load();
+      });
     
     $scope.username = "";
     $scope.name = "";
