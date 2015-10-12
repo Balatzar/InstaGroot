@@ -25,5 +25,3 @@ angular.module('app', ['ngRoute'])
     .service('userService', userService)
     /*.factory('', )*/
     .run(run);
-
-
