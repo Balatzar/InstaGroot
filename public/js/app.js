@@ -6,6 +6,10 @@ function config($routeProvider) {
 			templateUrl: 'views/main.html',
             controller: 'mainController'
 		})
+		.when('/todo', {
+			templateUrl: 'views/main.html',
+            controller: 'mainController'
+		})
         .when('/list/:list', {
 			templateUrl: 'views/list.html',
             controller: 'listController'
