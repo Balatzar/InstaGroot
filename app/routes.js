@@ -126,5 +126,15 @@ module.exports = function(app) {
     });
   });
   
+  app.delete('/api/users/:user_id', function(req, res) {
+    console.log(req.params.user_id);
+    User.remove({
+      _id: req.params.user_id
+    }, function(err, user) {
+      if(err)
+        res.send(err);
+      res.status(200).end();
+    })
+  });
 
 };
