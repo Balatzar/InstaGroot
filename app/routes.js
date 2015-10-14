@@ -105,7 +105,6 @@ module.exports = function(app) {
   // get one user
   app.get('/api/users', function(req, res) {
     var params = JSON.parse(req.headers.params);
-    console.log(params.user)
     User.find({"username": params.user}, function(err, todos) {
       if (err)
         res.send(err);
