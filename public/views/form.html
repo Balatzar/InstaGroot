@@ -1,7 +1,28 @@
 <h1>InstaGroot</h1>
 
  <form ng-submit="createUser()">
-  <input type="text" placeholder="*username" ng-model="username">
-  <input type="password" placeholder="*password" ng-model="password">
+  <input type="text" placeholder="3*name" 
+  			ng-model="name"
+  			ng-minlength="3"
+            ng-maxlength="20"
+            required>
+
+  <input type="text" placeholder="3*lastname" 
+  			ng-model="lastname"
+  			ng-minlength="3"
+            ng-maxlength="20"
+            required>
+
+  <input type="text" placeholder="3*username" 
+  			ng-model="username"
+  			ng-minlength="3"
+            ng-maxlength="10"
+            required>
+
+  <input type="password" placeholder="6*password" 				  ng-model="password"
+  			ng-minlength="6"
+            ng-maxlength="20"
+            required>
+
   <button type="submit">clik</button>
 </form>
