@@ -5,8 +5,17 @@ var Todo = require('./models/todo.js');
 // expose the routes to our app with module.exports
 
 module.exports = function(app) {
-
+  
   // get all todos
+  app.get('/api/todos/all', function(req, res) {
+    Todo.find(function(err, todos) {
+      if (err)
+        res.send(err);
+      res.json(todos);
+    });
+  });
+
+  // get all todos from a list
   app.get('/api/todos', function(req, res) {
     var params = JSON.parse(req.headers.params);
     Todo.find({"list": params.list}, function(err, todos) {
@@ -24,6 +33,7 @@ module.exports = function(app) {
       res.json(todos);
     });
   });
+  
 
   // create todo and get all the todos
   app.post('/api/todos', function(req, res) {
@@ -65,6 +75,7 @@ module.exports = function(app) {
     }, function(err, todo) {
       if(err)
         res.send(err);
+      res.status(200).end();
     })
   });
 
@@ -75,6 +86,7 @@ module.exports = function(app) {
     }, function(err, todo) {
       if(err)
         res.send(err);
+      res.status(200).end();
     })
   });
 
