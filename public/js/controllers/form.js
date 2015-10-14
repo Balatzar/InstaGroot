@@ -11,9 +11,8 @@ function formController($scope, $http) {
     dato.username = $scope.username;
     dato.password = $scope.password;
     $http.post('/api/users', dato)
+    localStorage.setItem("user", dato.username);
       .success(function(data) {
-        localStorage.setItem("user", dato.username);
-        b6f542147b1d1b26a1b349b50f57d81c620d1dcc
         $scope.name = "";
         $scope.lastname = "";
         $scope.username = "";
