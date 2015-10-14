@@ -8,9 +8,10 @@ function formController($scope, $http) {
     dato.password = $scope.password;
     $http.post('/api/users', dato)
       .success(function(data) {
+        localStorage.setItem("user", dato.username);
         $scope.username = "";
         $scope.password = "";
-        console.log(data)
+        console.log(data);
       })
       .error(function(data) {
         console.log('Error : ' + data);
