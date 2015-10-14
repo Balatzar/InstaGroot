@@ -1,5 +1,4 @@
 function formController($scope, $http) {
-  $scope.title = "ça marche";
   var dato = {};
   
   $scope.createUser = function() {
