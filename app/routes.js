@@ -91,7 +91,7 @@ module.exports = function(app) {
     })
   });
   
-  /*USER CRUD*/
+  /*-----------USER CRUD---------------------------------------------*/
   
     // get all users
     app.get('/api/users/all', function(req, res) {
@@ -114,6 +114,8 @@ module.exports = function(app) {
   
   app.post('/api/users', function(req, res) {
     User.create({
+      name: req.body.name,
+      lastname: req.body.lastname,
       username: req.body.username,
       password: req.body.password,
       type: "user"
