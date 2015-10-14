@@ -1,4 +1,7 @@
-<div ng-repeat="user in users | orderBy:'+username'">
+<a href="/#/main">Back</a>  
+
+<h2>Users</h2>
+ <div ng-repeat="user in users | orderBy:'+username'">
     <label>
     <input type="checkbox" ng-click="deleteUser(user._id)"><p>{{user.username}}</p>
   </label>
