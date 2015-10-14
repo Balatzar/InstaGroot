@@ -12,11 +12,13 @@ function formController($scope, $http) {
     dato.password = $scope.password;
     $http.post('/api/users', dato)
       .success(function(data) {
+        localStorage.setItem("user", dato.username);
+        b6f542147b1d1b26a1b349b50f57d81c620d1dcc
         $scope.name = "";
         $scope.lastname = "";
         $scope.username = "";
         $scope.password = "";
-        console.log(data)
+        console.log(data);
       })
       .error(function(data) {
         console.log('Error : ' + data);

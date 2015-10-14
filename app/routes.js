@@ -93,11 +93,23 @@ module.exports = function(app) {
   
   /*-----------USER CRUD---------------------------------------------*/
   
-    app.get('/api/users', function(req, res) {
+    // get all users
+    app.get('/api/users/all', function(req, res) {
     User.find(function(err, users) {
       if (err)
         res.send(err);
       res.json(users);
+    });
+  });
+  
+  // get one user
+  app.get('/api/users', function(req, res) {
+    var params = JSON.parse(req.headers.params);
+    console.log(params.user)
+    User.find({"username": params.user}, function(err, todos) {
+      if (err)
+        res.send(err);
+      res.json(todos);
     });
   });
   

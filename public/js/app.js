@@ -6,6 +6,14 @@ function config($routeProvider) {
 			templateUrl: 'views/form.html',
             controller: 'formController'
 		})
+		.when('/main', {
+			templateUrl: 'views/main.html',
+            controller: 'mainController'
+		})
+		.when('/edit', {
+			templateUrl: 'views/edit.html',
+            controller: 'editController'
+		})
 		.when('/todo', {
 			templateUrl: 'views/todo.html',
             controller: 'todoController'
@@ -16,8 +24,10 @@ function config($routeProvider) {
 		})
 }
 
-angular.module('todoyes', ['ngRoute'])
+angular.module('instagroot', ['ngRoute'])
     .config(config)
     .controller('todoController', todoController)
     .controller('listController', listController)
     .controller('formController', formController)
+    .controller('mainController', mainController)
+    .controller('editController', editController)
