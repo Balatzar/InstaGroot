@@ -91,7 +91,7 @@ module.exports = function(app) {
     })
   });
   
-  /*USER CRUD*/
+  /*-----------USER CRUD---------------------------------------------*/
   
     app.get('/api/users', function(req, res) {
     User.find(function(err, users) {
@@ -103,6 +103,8 @@ module.exports = function(app) {
   
   app.post('/api/users', function(req, res) {
     User.create({
+      name: req.body.name,
+      lastname: req.body.lastname,
       username: req.body.username,
       password: req.body.password,
       type: "user"
