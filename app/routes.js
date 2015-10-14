@@ -1,6 +1,7 @@
 // ROUTES
 
 var Todo = require('./models/todo.js');
+var User = require('./models/user.js');
 
 // expose the routes to our app with module.exports
 
@@ -89,5 +90,28 @@ module.exports = function(app) {
       res.status(200).end();
     })
   });
+  
+  /*USER CRUD*/
+  
+    app.get('/api/users', function(req, res) {
+    User.find(function(err, users) {
+      if (err)
+        res.send(err);
+      res.json(users);
+    });
+  });
+  
+  app.post('/api/users', function(req, res) {
+    User.create({
+      username: req.body.username,
+      password: req.body.password,
+      type: "user"
+    }, function(err, user) {
+      if (err)
+        res.send(err);
+      res.status(200).end();
+    });
+  });
+  
 
 };

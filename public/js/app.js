@@ -3,12 +3,12 @@
 function config($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/main.html',
-            controller: 'mainController'
+			templateUrl: 'views/form.html',
+            controller: 'formController'
 		})
 		.when('/todo', {
-			templateUrl: 'views/main.html',
-            controller: 'mainController'
+			templateUrl: 'views/todo.html',
+            controller: 'todoController'
 		})
         .when('/list/:list', {
 			templateUrl: 'views/list.html',
@@ -18,5 +18,6 @@ function config($routeProvider) {
 
 angular.module('todoyes', ['ngRoute'])
     .config(config)
-    .controller('mainController', mainController)
+    .controller('todoController', todoController)
     .controller('listController', listController)
+    .controller('formController', formController)

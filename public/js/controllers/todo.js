@@ -1,6 +1,6 @@
 // public/js/controllers/main.js
 
-function mainController($scope, $http) {
+function todoController($scope, $http) {
   
   $http.get('/api/lists')
     .success(function(data) {
