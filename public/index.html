@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="todoyes">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="" />
-    <title>Sample</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- AngularJS -->
-    <script src="js/libs/angular.min.js"></script>
-    <script src="js/libs/angular-route.min.js"></script>
-
-    <script src="js/controllers/mainController.js"></script>
-    <script src="js/controllers/signupController.js"></script>
-    <script src="js/services/todoService.js"></script>
-    <script src="js/services/userService.js"></script>
-
-    <script src="js/app.js"></script>
-  </head>
-
+ 
+  <meta charset="UTF-8">
+  <title>TODO YES</title>
+  
+  <script src="js/libs/angular.min.js"></script>
+  <script src="js/libs/angular-route.min.js"></script>
+  
+  <script src="js/controllers/main.js"></script> <!-- load up our controller -->
+  <script src="js/controllers/list.js"></script> <!-- load up our controller -->
+  <script src="js/app.js"></script> <!-- load our main application -->
+    
+  <link rel="stylesheet" href="assets/css/tacit.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+</head>
 <body>
-	<ng-view></ng-view>
+  <ng-view></ng-view>
 </body>
 </html>

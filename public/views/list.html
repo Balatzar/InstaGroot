@@ -1,0 +1,14 @@
+<a href="/#/">index</a>
+<h1>{{title}}</h1>
+
+<h3 ng-show="todos.length">Il reste {{todos.length}} trucs à faire.</h3>
+<div ng-repeat="todo in todos | orderBy:'+text'">
+  <label>
+    <input type="checkbox" ng-click="deleteTodo(todo._id)"><p> {{ todo.text }}</p>
+  </label>
+</div>
+
+<form ng-submit="createTodo()">
+  <input type="text" placeholder="écris" ng-model="text">
+  <button type="submit">clik</button>
+</form>

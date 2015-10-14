@@ -1,19 +1,14 @@
 {
-  "name": "grotest",
-  "version": "1.0.0",
-  "description": "",
+  "name": "todo-yes",
+  "version": "0.0.0",
+  "description": "Essai de faisage d'une app MEAN",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
+  "author": "scotch",
   "dependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "method-override": "^2.3.5",
-    "mongoose": "^4.1.10",
-    "morgan": "^1.6.1"
-  }
+    "express"    : "~4.7.2",
+    "mongoose"   : "~3.6.2",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+    }
 }

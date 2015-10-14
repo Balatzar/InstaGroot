@@ -1,27 +1,18 @@
+// public.app.js
+
 function config($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: 'views/main.html',
-			controller: 'mainController'
+            controller: 'mainController'
 		})
-        .when('/signup', {
-			templateUrl: 'views/signup.html',
-			controller: 'signupController'
+        .when('/list/:list', {
+			templateUrl: 'views/list.html',
+            controller: 'listController'
 		})
-		.otherwise({
-			redirectTo: '/'
-		});
 }
 
-function run($rootScope, $location){
-	//Nothing
-}
-
-angular.module('app', ['ngRoute'])
+angular.module('todoyes', ['ngRoute'])
     .config(config)
     .controller('mainController', mainController)
-    .controller('signupController', signupController)
-    .service('todoService', todoService)
-    .service('userService', userService)
-    /*.factory('', )*/
-    .run(run);
+    .controller('listController', listController)
