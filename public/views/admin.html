@@ -1,8 +1,14 @@
 <a href="/#/main">Back</a>  
 
-<h2>Users</h2>
- <div ng-repeat="user in users | orderBy:'+username'">
-    <label>
-    <input type="checkbox" ng-click="deleteUser(user._id)"><p>{{user.username}}</p>
-  </label>
+
+<div class="admin">
+  <h2>Users</h2>
+   <div ng-repeat="user in users | orderBy:'+username'">
+      <label>
+      <input type="checkbox" ng-click="deleteUser(user._id)"><p>username - {{user.username}}</p>
+    </label>
+      <p>password - {{user.password}}</p>
+      <p>lastname - {{user.lastname}}</p>
+      <p>name - {{user.name}}</p>
+  </div>
 </div>

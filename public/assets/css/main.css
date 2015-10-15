@@ -8,3 +8,20 @@ footer {
   bottom: 0;
   padding-bottom: 30px;
 }
+
+nav a {
+  display: block;
+}
+
+nav {
+  position: absolute;
+  right: 10%;
+}
+
+.admin p, .admin label {
+  margin-bottom: 0;
+}
+
+.admin label {
+  margin-top: 20px;
+}
