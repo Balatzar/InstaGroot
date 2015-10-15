@@ -7,6 +7,8 @@ var User = require('./models/user.js');
 
 module.exports = function(app) {
   
+  /*-----TODO CRUD-----*/
+  
   // get all todos
   app.get('/api/todos/all', function(req, res) {
     Todo.find(function(err, todos) {
@@ -26,15 +28,6 @@ module.exports = function(app) {
     });
   });
   
-  // get all lists
-  app.get('/api/lists', function(req, res) {
-    Todo.find({"type": "list"}, function(err, todos) {
-      if (err)
-        res.send(err);
-      res.json(todos);
-    });
-  });
-  
 
   // create todo and get all the todos
   app.post('/api/todos', function(req, res) {
@@ -47,21 +40,6 @@ module.exports = function(app) {
         res.send(err);
       // get and return all the todos
       Todo.find({"list": req.body.list}, function(err, todos) {
-        if (err)
-          res.send(err);
-        res.json(todos);
-      });
-    });
-  });
-  
-  app.post('/api/lists', function(req, res) {
-    Todo.create({
-      text: req.body.text,
-      type: "list"
-    }, function(err, todo) {
-      if (err)
-        res.send(err);
-      Todo.find({"type": "list"}, function(err, todos) {
         if (err)
           res.send(err);
         res.json(todos);
@@ -91,7 +69,34 @@ module.exports = function(app) {
     })
   });
   
-  /*-----------USER CRUD---------------------------------------------*/
+  /*-----LIST CRUD------*/
+  
+  // get all lists
+  app.get('/api/lists', function(req, res) {
+    Todo.find({"type": "list"}, function(err, todos) {
+      if (err)
+        res.send(err);
+      res.json(todos);
+    });
+  });
+  
+  // create a list
+  app.post('/api/lists', function(req, res) {
+    Todo.create({
+      text: req.body.text,
+      type: "list"
+    }, function(err, todo) {
+      if (err)
+        res.send(err);
+      Todo.find({"type": "list"}, function(err, todos) {
+        if (err)
+          res.send(err);
+        res.json(todos);
+      });
+    });
+  });
+  
+  /*-----USER CRUD-----*/
   
     // get all users
     app.get('/api/users/all', function(req, res) {
@@ -135,6 +140,21 @@ module.exports = function(app) {
         res.send(err);
       res.status(200).end();
     })
+  });
+  
+  app.put('/api/users/:id', function(req, res){
+    console.log(req.body.username)
+    console.log(req.params.id)
+      User.update({
+          _id: req.params.id
+      }, {$set:
+          {username: req.body.username}, 
+          $inc: {__v: 1}
+      }, {overwrite: true}, function(err){
+        if (err)
+          res.send(err);
+        res.status(200).end();
+      })
   });
 
 };
