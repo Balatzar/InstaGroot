@@ -2,6 +2,7 @@
 
 var Todo = require('./models/todo.js');
 var User = require('./models/user.js');
+var List = require('./models/list.js');
 
 // expose the routes to our app with module.exports
 
@@ -57,23 +58,12 @@ module.exports = function(app) {
       res.status(200).end();
     })
   });
-
-  // delete a todo
-  app.delete('/api/lists/:list_id', function(req, res) {
-    Todo.remove({
-      _id: req.params.list_id
-    }, function(err, todo) {
-      if(err)
-        res.send(err);
-      res.status(200).end();
-    })
-  });
   
   /*-----LIST CRUD------*/
   
   // get all lists
   app.get('/api/lists', function(req, res) {
-    Todo.find({"type": "list"}, function(err, todos) {
+    List.find({"type": "list"}, function(err, todos) {
       if (err)
         res.send(err);
       res.json(todos);
@@ -82,18 +72,29 @@ module.exports = function(app) {
   
   // create a list
   app.post('/api/lists', function(req, res) {
-    Todo.create({
+    List.create({
       text: req.body.text,
       type: "list"
     }, function(err, todo) {
       if (err)
         res.send(err);
-      Todo.find({"type": "list"}, function(err, todos) {
+      List.find({"type": "list"}, function(err, todos) {
         if (err)
           res.send(err);
         res.json(todos);
       });
     });
+  });
+
+  // delete a list
+  app.delete('/api/lists/:list_id', function(req, res) {
+    List.remove({
+      _id: req.params.list_id
+    }, function(err, todo) {
+      if(err)
+        res.send(err);
+      res.status(200).end();
+    })
   });
   
   /*-----USER CRUD-----*/
