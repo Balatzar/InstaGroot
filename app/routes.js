@@ -161,10 +161,10 @@ module.exports = function(app) {
   app.post('/api/login', function(req, res) {
     User.find({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.pwd
     }, function(err, user){
-      if (err)
-          res.send(err);
+      if (err || user.length == 0)
+          res.status(404).end();
       res.status(200).end();
     })
   });

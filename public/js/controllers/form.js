@@ -36,7 +36,7 @@ function formController($scope, $http) {
   $scope.checkUser = function() {
      var dato = {}
      dato.username = $scope.username;
-     dato.password = $scope.password;
+     dato.pwd = $scope.password;
      $http.post('/api/login', dato).then(function(res){
         //SUCCESS
         console.log(res);
