@@ -30,3 +30,7 @@ nav {
 .admin label {
   margin-top: 20px;
 }
+
+canva {
+  display: none;
+}

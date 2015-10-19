@@ -32,7 +32,7 @@ function config($routeProvider) {
         });
 }
 
-angular.module('instagroot', ['ngRoute'])
+angular.module('instagroot', ['ngRoute', 'camera'])
     .config(config)
     .controller('todoController', todoController)
     .controller('listController', listController)
