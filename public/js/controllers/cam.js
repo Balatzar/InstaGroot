@@ -16,7 +16,7 @@ function camController($scope, $http) {
       // un objet avec les paramètres media
       {
         video: true,
-        audio: false
+        audio: true
       },
       // une fonction en cas de réussite de la récupération du media
       function success(localMediaStream) {
