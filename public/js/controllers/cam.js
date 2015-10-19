@@ -1,35 +1,93 @@
 function camController($scope, $http) {
   $scope.title = "Caméra";
-  var video = document.querySelector('video');
   
-  // selectionner le bon user media en fonction du navigateur
-  navigator.getUserMedia = ( navigator.getUserMedia ||
-                             navigator.webkitGetUserMedia ||
-                             navigator.mozGetUserMedia ||
-                             navigator.msGetUserMedia);
+  var width = 320;    // We will scale the photo width to this
+  var height = 0;     // This will be computed based on the input stream
+
+  var streaming = false;
+
+  var video = null;
+  var canvas = null;
+  var photo = null;
+  var startbutton = null;
   
-  
-  // si on a trouvé un user media
-  if (navigator.getUserMedia) {
-    //on appelle la fonction avec trois paramètres
-    navigator.getUserMedia(
-      // un objet avec les paramètres media
+  function startup() {
+    video = document.getElementById('video');
+    canvas = document.getElementById('canvas');
+    photo = document.getElementById('photo');
+    startbutton = document.getElementById('startbutton');
+    
+    navigator.getMedia = ( navigator.getUserMedia ||
+                           navigator.webkitGetUserMedia ||
+                           navigator.mozGetUserMedia ||
+                           navigator.msGetUserMedia);
+    navigator.getMedia(
       {
         video: true,
         audio: true
       },
-      // une fonction en cas de réussite de la récupération du media
-      function success(localMediaStream) {
-        // ajout de l'attribut src à notre objet video qui permet de streamer depuis la cam
-        video.src = window.URL.createObjectURL(localMediaStream);
+      function(stream) {
+        if (navigator.mozGetUserMedia) {
+          video.mozSrcObject = stream;
+        } else {
+          var vendorURL = window.URL || window.webkitURL;
+          video.src = vendorURL.createObjectURL(stream);
+        }
+        video.play();
       },
-      // une fonction en cas d'erreur
-      function fail(err) {
-        console.log("Erreur dans la récupération du média storage : " + err);
+      function(err) {
+        console.log("An error occured! " + err);
       }
     );
-  // si on ne trouve pas de user media
-  } else {
-    alert("Vous ne supportez pas la vidéo n stuff.")
+    
+    video.addEventListener('canplay', function(ev){
+      if (!streaming) {
+        height = video.videoHeight / (video.videoWidth/width);
+      
+        // Firefox currently has a bug where the height can't be read from
+        // the video, so we will make assumptions if this happens.
+      
+        if (isNaN(height)) {
+          height = width / (4/3);
+        }
+      
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        streaming = true;
+      }
+    }, false);
+    
+    startbutton.addEventListener('click', function(ev){
+      takepicture();
+      ev.preventDefault();
+    }, false);
+    
+    clearphoto();
   }
+  
+  function clearphoto() {
+    var context = canvas.getContext('2d');
+    context.fillStyle = "#AAA";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    var data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
+  
+  function takepicture() {
+    var context = canvas.getContext('2d');
+    if (width && height) {
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(video, 0, 0, width, height);
+    
+      var data = canvas.toDataURL('image/png');
+      photo.setAttribute('src', data);
+    } else {
+      clearphoto();
+    }
+  }
+  
 }
