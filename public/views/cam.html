@@ -15,4 +15,5 @@
     snapshot="vm.picture"
     flash-fallback-url="/vendors/webcamjs/webcam.swf"
 ></ng-camera>
-<img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture" ng-click="jeclick()">
+<img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
+<button ng-show="vm.picture" ng-click="jeclick()">sauvegarder</button>
