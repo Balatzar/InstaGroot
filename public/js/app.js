@@ -22,6 +22,10 @@ function config($routeProvider) {
 			templateUrl: 'views/list.html',
             controller: 'listController'
 		})
+		.when('/admin', {
+			templateUrl: 'views/admin.html',
+            controller: 'adminController'
+		})
 }
 
 angular.module('instagroot', ['ngRoute'])
@@ -31,3 +35,4 @@ angular.module('instagroot', ['ngRoute'])
     .controller('formController', formController)
     .controller('mainController', mainController)
     .controller('editController', editController)
+	.controller('adminController', adminController)
