@@ -27,7 +27,8 @@ function config($routeProvider) {
             controller: 'adminController'
 		})
         .when('/cam', {
-            templateUrl: 'views/cam.html'
+            templateUrl: 'views/cam.html',
+            controller: 'camController'
         });
 }
 
@@ -39,3 +40,4 @@ angular.module('instagroot', ['ngRoute', 'camera'])
     .controller('mainController', mainController)
     .controller('editController', editController)
 	.controller('adminController', adminController)
+	.controller('camController', camController)
