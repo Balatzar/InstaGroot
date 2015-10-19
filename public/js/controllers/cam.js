@@ -1,33 +1,35 @@
 function camController($scope, $http) {
   $scope.title = "Caméra";
+  var video = document.querySelector('video');
   
-navigator.getUserMedia = ( navigator.getUserMedia ||
-                       navigator.webkitGetUserMedia ||
-                       navigator.mozGetUserMedia ||
-                       navigator.msGetUserMedia);
-
-if (navigator.getUserMedia) {
-   navigator.getUserMedia (
-
-      // constraints
+  // selectionner le bon user media en fonction du navigateur
+  navigator.getUserMedia = ( navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia ||
+                             navigator.msGetUserMedia);
+  
+  
+  // si on a trouvé un user media
+  if (navigator.getUserMedia) {
+    //on appelle la fonction avec trois paramètres
+    navigator.getUserMedia(
+      // un objet avec les paramètres media
       {
-         video: true,
-         audio: true
+        video: true,
+        audio: false
       },
-
-      // successCallback
-      function(localMediaStream) {
-         var video = document.querySelector('video');
-         video.src = window.URL.createObjectURL(localMediaStream);
-         // Do something with the video here, e.g. video.play()
+      // une fonction en cas de réussite de la récupération du media
+      function success(localMediaStream) {
+        // ajout de l'attribut src à notre objet video qui permet de streamer depuis la cam
+        video.src = window.URL.createObjectURL(localMediaStream);
       },
-
-      // errorCallback
-      function(err) {
-         console.log("The following error occured: " + err);
+      // une fonction en cas d'erreur
+      function fail(err) {
+        console.log("Erreur dans la récupération du média storage : " + err);
       }
-   );
-} else {
-   console.log("getUserMedia not supported");
-}
+    );
+  // si on ne trouve pas de user media
+  } else {
+    alert("Vous ne supportez pas la vidéo n stuff.")
+  }
 }
