@@ -1,5 +1,5 @@
 body {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -16,6 +16,11 @@ nav a {
 nav {
   position: absolute;
   right: 10%;
+}
+
+.titre {
+  position: absolute;
+  left: 10%;
 }
 
 .admin p, .admin label {

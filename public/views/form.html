@@ -1,6 +1,27 @@
 <h1>InstaGroot</h1>
 
- <form ng-submit="createUser()">
+ <button ng-click="switch()">{{logState}}</button>
+ 
+<form class="titre" ng-show="log" ng-model="log-in" ng-submit="checkUser()">
+
+  <h2>Log In</h2>
+  <input type="text" placeholder="username" 
+        ng-model="username"
+        ng-minlength="3"
+            ng-maxlength="10"
+            required>
+
+  <input type="password" placeholder="password"           ng-model="password"
+        ng-minlength="6"
+            ng-maxlength="20"
+            required>
+  <button type="submit">clik</button>
+</form>
+
+
+
+ <form ng-hide="log" ng-model="sign-up" ng-submit="createUser()">
+  <h2>Sign Up</h2>
   <input type="text" placeholder="name" 
   			ng-model="name"
   			ng-minlength="3"

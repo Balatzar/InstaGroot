@@ -1,6 +1,8 @@
 function formController($scope, $http) {
   var dato = {};
-  
+  $scope.log = true;
+  $scope.logState = "Sign Up";
+
   $scope.createUser = function() {
     dato.name = $scope.name;
     dato.lastname = $scope.lastname;
@@ -19,4 +21,15 @@ function formController($scope, $http) {
         console.log('Error : ' + data);
       });
   }
+
+  $scope.switch = function() {
+    if ($scope.log) {
+      $scope.log = false;
+      $scope.logState = "Log In";
+    } else {
+      $scope.log = true;
+      $scope.logState = "Sign Up";
+    }
+  };
+
 }
