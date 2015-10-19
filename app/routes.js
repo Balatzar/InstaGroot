@@ -3,6 +3,7 @@
 var Todo = require('./models/todo.js');
 var User = require('./models/user.js');
 var List = require('./models/list.js');
+var Post = require('./models/post.js');
 
 // expose the routes to our app with module.exports
 
@@ -156,6 +157,24 @@ module.exports = function(app) {
           res.send(err);
         res.status(200).end();
       })
+  });
+  
+  app.post('/api/posts', function(req, res) {
+    Post.create({
+      photo: req.body.picture
+    }, function(err, post) {
+      if (err)
+        res.send(err);
+      res.status(200).end();
+    });
+  });
+  
+  app.get('/api/posts', function(req, res) {
+    Post.find(function(err, posts) {
+      if (err)
+        res.send(err);
+      res.json(posts);
+    });
   });
 
 };
