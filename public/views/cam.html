@@ -1,11 +1,19 @@
-<h1>{{title}}</h1>
+<h1>caméra</h1>
 
-<div>
-  <video id="video"></video>
-  <button id="startbutton">Photosynthèse</button>
-</div>
-
-<canva id="canva"></canva>
-<div class="output">
-  <img id="photo" alt="The screen capture will appear in this box.">
-</div>
+<ng-camera
+    capture-message="Cheeeese!"
+    countdown="3"
+    output-height="160"
+    output-width="213"
+    viewer-height="320"
+    viewer-width="426"
+    crop-height="90"
+    crop-width="120"
+    image-format="jpeg"
+    jpeg-quality="100"
+    action-message="Take picture"
+    snapshot="vm.picture"
+    flash-fallback-url="/vendors/webcamjs/webcam.swf"
+    overlay-url="/overlay.png"
+    shutter-url="/shutter.mp3"
+></ng-camera>
