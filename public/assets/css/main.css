@@ -20,7 +20,7 @@ nav {
 
 .titre {
   position: absolute;
-  left: 10%;
+  right: 50%;
 }
 
 .admin p, .admin label {

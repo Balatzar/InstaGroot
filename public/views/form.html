@@ -1,8 +1,9 @@
+ <button  class="titre" ng-click="switch()">{{logState}}</button>
+ 
 <h1>InstaGroot</h1>
 
- <button ng-click="switch()">{{logState}}</button>
  
-<form class="titre" ng-show="log" ng-model="log-in" ng-submit="checkUser()">
+<form ng-show="log" ng-model="log-in" ng-submit="checkUser()">
 
   <h2>Log In</h2>
   <input type="text" placeholder="username" 
