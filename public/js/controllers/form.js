@@ -1,10 +1,9 @@
-function formController($scope, $http, userService) {
+function formController($scope, userService, $location) {
   var dato = {};
   $scope.log = true;
   $scope.logState = "Sign Up";
 
   $scope.createUser = function() {
-    var dato = {};
     dato.name = $scope.name;
     dato.lastname = $scope.lastname;
     dato.username = $scope.username;
@@ -17,10 +16,12 @@ function formController($scope, $http, userService) {
         $scope.username = "";
         $scope.password = "";
         console.log(data);
+       $location.path('/main');
       });
   }
 
   $scope.switch = function() {
+    $scope.password = "";
     if ($scope.log) {
       $scope.log = false;
       $scope.logState = "Log In";
@@ -31,14 +32,16 @@ function formController($scope, $http, userService) {
   };
 
   $scope.checkUser = function() {
-     var dato = {}
      dato.username = $scope.username;
      dato.pwd = $scope.password;
-     $http.post('/api/login', dato).then(function(res){
-        //SUCCESS
-        console.log(res);
+     userService.check(dato).then(function(res){
+       //SUCCESS
+       console.log(res);
+       $location.path('/main');
      }, function(){
         alert('miaouu');
+        $scope.username = "";
+        $scope.password = "";
      });
   }
 

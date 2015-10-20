@@ -1,16 +1,15 @@
-function adminController($scope, $http) {
+function adminController($scope, userService) {
 
-  $http.get('/api/users')
+  userService.get()
     .success(function(data) {
     $scope.users = data;
   })
     .error(function(data) {
-    console.log('Error : ' + data);
+    console.log('error getuser' + error)
   });
 
   $scope.deleteUser = function(id) {
-    console.log(id);
-    $http.delete('/api/users/' + id)
+    userService.delete(id)
       .success(function(data) {
       $scope.users = data;
       console.log(data);
@@ -18,12 +17,12 @@ function adminController($scope, $http) {
       .error(function(data) {
       console.log('Error : ' + data);
     });
-    $http.get('/api/users')
-      .success(function(data) {
-      $scope.users = data;
-    })
-      .error(function(data) {
-      console.log('Error : ' + data);
-    });
+    userService.get()
+    .success(function(data) {
+    $scope.users = data;
+  })
+    .error(function(data) {
+    console.log('error getuser' + error)
+  });
   };
 }
