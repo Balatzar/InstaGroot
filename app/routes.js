@@ -176,5 +176,16 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
+  
+  app.delete('/api/posts/:post_id', function(req, res) {
+    console.log(req.params.post_id);
+    Post.remove({
+      _id: req.params.post_id
+    }, function(err, post) {
+      if(err)
+        res.send(err);
+      res.status(200).end();
+    })
+  });
 
 };
