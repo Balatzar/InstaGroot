@@ -118,6 +118,7 @@ module.exports = function(app) {
     });
   });
   
+  // create user
   app.post('/api/users', function(req, res) {
     User.create({
       name: req.body.name,
@@ -132,6 +133,7 @@ module.exports = function(app) {
     });
   });
   
+  // delete user
   app.delete('/api/users/:user_id', function(req, res) {
     console.log(req.params.user_id);
     User.remove({
@@ -143,48 +145,19 @@ module.exports = function(app) {
     })
   });
   
+  // update user
   app.put('/api/users/:id', function(req, res){
     console.log(req.body.username)
     console.log(req.params.id)
       User.update({
           _id: req.params.id
-      }, {$set:
-          {username: req.body.username}, 
+      }, {$set: {username: req.body.username},
           $inc: {__v: 1}
       }, {overwrite: true}, function(err){
         if (err)
           res.send(err);
         res.status(200).end();
       })
-  });
-  
-  app.post('/api/posts', function(req, res) {
-    Post.create({
-      photo: req.body.picture
-    }, function(err, post) {
-      if (err)
-        res.send(err);
-      res.status(200).end();
-    });
-  });
-  
-  app.get('/api/posts', function(req, res) {
-    Post.find(function(err, posts) {
-      if (err)
-        res.send(err);
-      res.json(posts);
-    });
-  });
-  
-  app.delete('/api/posts/:post_id', function(req, res) {
-    console.log(req.params.post_id);
-    Post.remove({
-      _id: req.params.post_id
-    }, function(err, post) {
-      if(err)
-        res.send(err);
-      res.status(200).end();
-    })
   });
 
 //checkUser
@@ -195,6 +168,41 @@ module.exports = function(app) {
     }, function(err, user){
       if (err || user.length == 0)
           res.status(404).end();
+      res.status(200).end();
+    })
+  });
+  
+  
+  /*CRUD POST*/
+  
+  // create post
+  app.post('/api/posts', function(req, res) {
+    Post.create({
+      photo: req.body.picture
+    }, function(err, post) {
+      if (err)
+        res.send(err);
+      res.status(200).end();
+    });
+  });
+  
+  // get all posts
+  app.get('/api/posts', function(req, res) {
+    Post.find(function(err, posts) {
+      if (err)
+        res.send(err);
+      res.json(posts);
+    });
+  });
+  
+  //delete a post
+  app.delete('/api/posts/:post_id', function(req, res) {
+    console.log(req.params.post_id);
+    Post.remove({
+      _id: req.params.post_id
+    }, function(err, post) {
+      if(err)
+        res.send(err);
       res.status(200).end();
     })
   });
