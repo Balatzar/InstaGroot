@@ -16,7 +16,7 @@ function formController($scope, userService, $location) {
         $scope.username = "";
         $scope.password = "";
         console.log(data);
-       $location.path('/main');
+        $location.path('/main');
       });
   }
 

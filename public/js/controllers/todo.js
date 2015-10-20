@@ -35,12 +35,12 @@ function todoController($scope, $http) {
         console.log('Error : ' + data);
       });
     $http.get('/api/lists')
-    .success(function(data) {
-      $scope.lists = data;
-      console.log(data);
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
+      .success(function(data) {
+        $scope.lists = data;
+        console.log(data);
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
   }
 }

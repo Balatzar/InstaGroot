@@ -4,32 +4,32 @@ function adminController($scope, userService) {
 
   // loadMore function
   $scope.loadMore = function() {
-  $scope.limit += 3;
+    $scope.limit += 3;
   };
 
   userService.get()
     .success(function(data) {
-    $scope.users = data;
-  })
+      $scope.users = data;
+    })
     .error(function(data) {
-    console.log('error getuser' + error)
-  });
+      console.log('error getuser' + error)
+    });
 
   $scope.deleteUser = function(id) {
     userService.delete(id)
       .success(function(data) {
-      $scope.users = data;
-      console.log(data);
-    })
+        $scope.users = data;
+        console.log(data);
+      })
       .error(function(data) {
-      console.log('Error : ' + data);
-    });
+        console.log('Error : ' + data);
+      });
     userService.get()
-    .success(function(data) {
-    $scope.users = data;
-  })
-    .error(function(data) {
-    console.log('error getuser' + error)
-  });
+      .success(function(data) {
+        $scope.users = data;
+      })
+      .error(function(data) {
+        console.log('error getuser' + error)
+      });
   };
 }
