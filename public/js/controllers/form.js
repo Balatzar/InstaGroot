@@ -1,4 +1,4 @@
-function formController($scope, $http) {
+function formController($scope, $http, userService) {
   var dato = {};
   $scope.log = true;
   $scope.logState = "Sign Up";
@@ -8,17 +8,14 @@ function formController($scope, $http) {
     dato.lastname = $scope.lastname;
     dato.username = $scope.username;
     dato.password = $scope.password;
-    $http.post('/api/users', dato)
-      .success(function(data) {
+    userService.post(dato)
+      .then(function(data) {
         localStorage.setItem("user", dato.username);
         $scope.name = "";
         $scope.lastname = "";
         $scope.username = "";
         $scope.password = "";
         console.log(data);
-      })
-      .error(function(data) {
-        console.log('Error : ' + data);
       });
   }
 
