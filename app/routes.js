@@ -101,7 +101,7 @@ module.exports = function(app) {
   /*-----USER CRUD-----*/
   
     // get all users
-    app.get('/api/users/all', function(req, res) {
+    app.get('/api/users', function(req, res) {
     User.find(function(err, users) {
       if (err)
         res.send(err);
@@ -110,9 +110,8 @@ module.exports = function(app) {
   });
   
   // get one user
-  app.get('/api/users', function(req, res) {
-    var params = JSON.parse(req.headers.params);
-    User.find({"username": params.user}, function(err, todos) {
+  app.get('/api/users/:username', function(req, res) {
+    User.find({"username": req.params.username}, function(err, todos) {
       if (err)
         res.send(err);
       res.json(todos);
@@ -184,6 +183,18 @@ module.exports = function(app) {
     }, function(err, post) {
       if(err)
         res.send(err);
+      res.status(200).end();
+    })
+  });
+
+//checkUser
+  app.post('/api/login', function(req, res) {
+    User.find({
+      username: req.body.username,
+      password: req.body.pwd
+    }, function(err, user){
+      if (err || user.length == 0)
+          res.status(404).end();
       res.status(200).end();
     })
   });

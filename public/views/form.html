@@ -8,14 +8,15 @@
   <h2>Log In</h2>
   <input type="text" placeholder="username" 
         ng-model="username"
-        ng-minlength="3"
-            ng-maxlength="10"
-            required>
+        pattern=".{3,10}"
+        required title="entre 3 et 10 miaou"
+        required>
 
-  <input type="password" placeholder="password"           ng-model="password"
-        ng-minlength="6"
-            ng-maxlength="20"
-            required>
+  <input type="password" placeholder="password" 
+        ng-model="password"
+        pattern=".{6,15}"
+        required title="entre 6 et 15 miaou"
+        required>
   <button type="submit">clik</button>
 </form>
 

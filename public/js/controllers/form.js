@@ -4,6 +4,7 @@ function formController($scope, $http, userService) {
   $scope.logState = "Sign Up";
 
   $scope.createUser = function() {
+    var dato = {};
     dato.name = $scope.name;
     dato.lastname = $scope.lastname;
     dato.username = $scope.username;
@@ -28,5 +29,17 @@ function formController($scope, $http, userService) {
       $scope.logState = "Sign Up";
     }
   };
+
+  $scope.checkUser = function() {
+     var dato = {}
+     dato.username = $scope.username;
+     dato.pwd = $scope.password;
+     $http.post('/api/login', dato).then(function(res){
+        //SUCCESS
+        console.log(res);
+     }, function(){
+        alert('miaouu');
+     });
+  }
 
 }
