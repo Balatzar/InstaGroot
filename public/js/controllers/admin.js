@@ -1,6 +1,6 @@
 function adminController($scope, $http) {
 
-  $http.get('/api/users/')
+  $http.get('/api/users')
     .success(function(data) {
     $scope.users = data;
   })
@@ -18,7 +18,7 @@ function adminController($scope, $http) {
       .error(function(data) {
       console.log('Error : ' + data);
     });
-    $http.get('/api/users/')
+    $http.get('/api/users')
       .success(function(data) {
       $scope.users = data;
     })
