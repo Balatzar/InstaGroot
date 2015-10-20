@@ -1,4 +1,11 @@
 function adminController($scope, $http) {
+  // set the default amount of items being displayed
+  $scope.limit = 6;
+
+  // loadMore function
+  $scope.loadMore = function() {
+  $scope.limit += 3;
+  };
 
   $http.get('/api/users')
     .success(function(data) {

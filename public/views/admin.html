@@ -3,12 +3,13 @@
 
 <div class="admin">
   <h2>Users</h2>
-   <div ng-repeat="user in users | orderBy:'+username'">
-      <label>
+  <div ng-repeat="user in users | orderBy:'+username' | limitTo:limit">
+    <label>
       <input type="checkbox" ng-click="deleteUser(user._id)"><p>username - {{user.username}}</p>
     </label>
-      <p>password - {{user.password}}</p>
-      <p>lastname - {{user.lastname}}</p>
-      <p>name - {{user.name}}</p>
+    <p>password - {{user.password}}</p>
+    <p>lastname - {{user.lastname}}</p>
+    <p>name - {{user.name}}</p>
   </div>
+  <button ng-click='loadMore()'>Load More</button>
 </div>
