@@ -1,8 +1,20 @@
 <a href="/#/main">Back</a> - <a ng-click="logout()">Logout</a>
 <h1>InstaGroot</h1>
-<div>username : {{user[0].username}}</div>
-<div>password : {{user[0].password}}</div>
 
-<button ng-click="editUser()">edito</button>
+<div ng-show="editing">
+  <div>username : {{user[0].username}}</div>
+  <div>password : {{user[0].password}}</div>
+  <div>name : {{user[0].name}}</div>
+  <div>lastname : {{user[0].lastname}}</div>
+  <button ng-click="change()">edito</button>
+</div>
+
+<div ng-hide="editing">
+  <input type="text" placeholder="{{user[0].username}}" ng-model="username">
+  <input type="password" placeholder="{{user[0].password}}" ng-model="password">
+  <input type="text" placeholder="{{user[0].name}}" ng-model="name">  
+  <input type="text" placeholder="{{user[0].lastname}}" ng-model="lastname">
+  <button ng-click="editUser()">envoyado</button>
+</div>
 
 <button class="photo"><a href="/#/post">Groot ta face !</a></button
