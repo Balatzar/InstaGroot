@@ -20,6 +20,15 @@ module.exports = function(app) {
     });
   });
   
+  // get one post
+  app.get('/api/posts/:post_id', function(req, res) {
+    Post.find({"_id": req.params._id}, function(err, posts) {
+      if (err)
+        res.send(err);
+      res.json(posts);
+    });
+  });
+  
   // get all posts
   app.get('/api/posts', function(req, res) {
     Post.find(function(err, posts) {
@@ -29,7 +38,7 @@ module.exports = function(app) {
     });
   });
   
-  //delete a post
+  // delete a post
   app.delete('/api/posts/:post_id', function(req, res) {
     console.log(req.params.post_id);
     Post.remove({
@@ -41,6 +50,7 @@ module.exports = function(app) {
     })
   });
   
+  // delete all posts
   app.delete('/api/posts', function(req, res) {
     console.log(req.params.post_id);
     Post.remove(function(err, post) {

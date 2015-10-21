@@ -3,7 +3,7 @@ function postController($scope, postService) {
   var dato = {};
   $scope.user = user;
   
-  $scope.jeclick = function(){ 
+  $scope.jeclick = function(){
     dato.author = $scope.user;
     dato.picture = $scope.vm.picture;
     dato.title = $scope.$$childTail.title;
