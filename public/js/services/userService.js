@@ -9,7 +9,7 @@ function userService($http) {
     getOne: function(user) {
       return $http.get('/api/users/' + user);
     },
-    edit: function(user, data) {
+    edit: function(user, data) {  
       return $http.put('/api/users/' + user, data);
     },
     get: function() {

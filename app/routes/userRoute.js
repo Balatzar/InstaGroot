@@ -39,7 +39,6 @@ module.exports = function(app) {
   
   // delete user
   app.delete('/api/users/:user_id', function(req, res) {
-    console.log(req.params.user_id);
     User.remove({
       _id: req.params.user_id
     }, function(err, user) {
@@ -50,17 +49,20 @@ module.exports = function(app) {
   });
   
   // update user
-  app.put('/api/users/:username', function(req, res){
+  app.put('/api/users/:user_id', function(req, res){
     console.log(req.body)
-      User.update({
-          _id: req.params.id
-      }, {$set: {username: req.body.username},
-          $inc: {__v: 1}
-      }, {overwrite: true}, function(err){
-        if (err)
-          res.send(err);
-        res.status(200).end();
-      })
+    User.update({
+        _id: req.params.user_id
+    }, {$set: {username: req.body.username,
+              password: req.body.password,
+              name: req.body.name,
+              lastname: req.body.lastname},
+        $inc: {__v: 1}
+    }, {overwrite: true}, function(err){
+      if (err)
+        res.send(err);
+      res.status(200).end();
+    })
   });
 
 //checkUser
