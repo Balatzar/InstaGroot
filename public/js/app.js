@@ -30,6 +30,9 @@ function config($routeProvider) {
 		templateUrl: 'views/post.html',
 		controller: 'postController'
 	})
+    .otherwise({
+			redirectTo: '/'
+  })
 }
 
 angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
