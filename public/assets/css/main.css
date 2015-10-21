@@ -33,3 +33,9 @@ canva {
 a {
   cursor: pointer;
 }
+
+.photo {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+}
