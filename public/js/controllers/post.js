@@ -5,7 +5,7 @@ function postController($scope, postService) {
   
   $scope.jeclick = function(){ 
     dato.author = $scope.user;
-    dato.picture = "$scope.vm.picture";
+    dato.picture = $scope.vm.picture;
     dato.title = $scope.$$childTail.title;
     dato.description = $scope.$$childTail.description;
     dato.tags = $scope.$$childTail.tags;

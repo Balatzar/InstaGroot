@@ -10,9 +10,9 @@ module.exports = function(app) {
     Post.create({
       title: req.body.title,
       author: req.body.author,
-      photo: req.body.picture,
       description: req.body.description,
-      tags: req.body.tags
+      tags: req.body.tags,
+      photo: req.body.picture
     }, function(err, post) {
       if (err)
         res.send(err);
