@@ -1,0 +1,3 @@
+function postController($scope, postService) {
+  
+}
