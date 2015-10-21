@@ -9,14 +9,18 @@ function userService($http) {
     getOne: function(user) {
       return $http.get('/api/users/' + user);
     },
-    edit: function(headers, data) {
-      return $http.put('/api/users/:id', headers, data);
+    edit: function(user, data) {  
+      return $http.put('/api/users/' + user, data);
     },
     get: function() {
       return $http.get('/api/users');
     },
     delete: function(id) {
       return $http.delete('/api/users/' + id);
+    },
+    logout: function($location) {
+      localStorage.clear();
+      $location.path('/');
     }
   }
 } 

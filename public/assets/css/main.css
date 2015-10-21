@@ -29,3 +29,18 @@ nav {
 canva {
   display: none;
 }
+
+a {
+  cursor: pointer;
+}
+
+.photo {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+}
+
+form#post input,
+form#post textarea {
+  width: 500px;
+}

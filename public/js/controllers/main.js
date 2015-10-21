@@ -1,18 +1,21 @@
-function mainController($scope, $http) {
+function mainController($scope, $http, userService, postService, $location ) {
+  if (!localStorage.getItem("user"))
+    $location.path('/');
+  
+  $scope.logout = function() {
+    userService.logout($location);
+  }
+  
   var user = localStorage.getItem("user");
   var dato = {};
   $scope.user = user;
   
-  $scope.jeclick = function(){
-    console.log($scope.vm.picture);
-    dato.picture = $scope.vm.picture;
-    dato.author = localStorage.getItem("user");
-    $http.post('/api/posts', dato)
-      .success(function(data) {
-        console.log(data);
-      })
-      .error(function(data) {
-        console.log('Error : ' + data);
-      });
-  }
+  postService.getAll()
+    .success(function(data) {
+      $scope.posts = data;
+      console.log(data);
+    })
+    .error(function(data) {
+      console.log('Error: ' + data);
+    });;
 }

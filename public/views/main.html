@@ -1,21 +1,11 @@
-<p>User : {{user}} || <a href="/#/edit">edit settings</a>
+<p>User : {{user}} || <a href="/#/edit">edit settings</a> - <a ng-click="logout()">Logout</a>
 </p>
 <h1>InstaGroot</h1>
+<button class="photo"><a href="/#/post">Groot ta face !</a></button>
 
-<ng-camera
-    capture-message="Cheeeese!"
-    countdown="1"
-    output-height="500"
-    output-width="888"
-    viewer-height="500"
-    viewer-width="888"
-    crop-height="500"
-    crop-width="500"
-    image-format="jpeg"
-    jpeg-quality="100"
-    action-message="Take picture"
-    snapshot="vm.picture"
-    flash-fallback-url="/vendors/webcamjs/webcam.swf"
-></ng-camera>
-<img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
-<button ng-show="vm.picture" ng-click="jeclick()">sauvegarder</button>
+<div ng-repeat="post in posts | orderBy: 'created_at':true">
+  <h1>{{post.title}}</h1>
+  <img src="{{post.photo}}">
+  <p>{{post.description}}</p>
+  <p>{{post.tags}}</p>
+</div>
