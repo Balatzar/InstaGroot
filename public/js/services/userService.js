@@ -19,4 +19,4 @@ function userService($http) {
       return $http.delete('/api/users/' + id);
     }
   }
-}
+} 
