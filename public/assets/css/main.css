@@ -29,3 +29,7 @@ nav {
 canva {
   display: none;
 }
+
+a {
+  cursor: pointer;
+}

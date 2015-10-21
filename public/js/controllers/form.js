@@ -1,4 +1,8 @@
 function formController($scope, userService, $location) {
+  
+  if (localStorage.getItem("user"))
+    $location.path('/main')
+    
   var dato = {};
   $scope.log = true;
   $scope.logState = "Sign Up";
