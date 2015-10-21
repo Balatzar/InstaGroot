@@ -10,11 +10,32 @@
 </div>
 
 <div ng-hide="editing">
-  <input type="text" placeholder="{{user[0].username}}" ng-model="username">
-  <input type="password" placeholder="{{user[0].password}}" ng-model="password">
-  <input type="text" placeholder="{{user[0].name}}" ng-model="name">  
-  <input type="text" placeholder="{{user[0].lastname}}" ng-model="lastname">
-  <button ng-click="editUser()">envoyado</button>
+  <form ng-hide="log" ng-submit="editUser()">
+    <input type="text" placeholder="username : {{user[0].username}}" 
+              ng-model="username"
+              ng-minlength="3"
+              ng-maxlength="20"
+              >
+
+    <input type="text" placeholder="password : {{user[0].password}}" 
+              ng-model="password"
+              ng-minlength="6"
+              ng-maxlength="20"
+              >
+
+    <input type="text" placeholder="name : {{user[0].name}}" 
+              ng-model="name"
+              ng-minlength="3"
+              ng-maxlength="20"
+              >
+
+    <input type="password" placeholder="lastname : {{user[0].lastname}}" 				  
+               ng-model="lastname"
+              ng-minlength="3"
+              ng-maxlength="20"
+              >
+    <button type="submit">envoyado</button>
+  </form>
 </div>
 
 <button class="photo"><a href="/#/post">Groot ta face !</a></button

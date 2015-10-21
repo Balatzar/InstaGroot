@@ -9,8 +9,8 @@ function userService($http) {
     getOne: function(user) {
       return $http.get('/api/users/' + user);
     },
-    edit: function(user, data) {  
-      return $http.put('/api/users/' + user, data);
+    edit: function(id, data) {  
+      return $http.put('/api/users/' + id, data);
     },
     get: function() {
       return $http.get('/api/users');
