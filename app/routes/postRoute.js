@@ -6,8 +6,13 @@ module.exports = function(app) {
   
   // create post
   app.post('/api/posts', function(req, res) {
+    console.log(req.body);
     Post.create({
-      photo: req.body.picture
+      title: req.body.title,
+      author: req.body.author,
+      photo: req.body.picture,
+      description: req.body.description,
+      tags: req.body.tags
     }, function(err, post) {
       if (err)
         res.send(err);
@@ -30,6 +35,15 @@ module.exports = function(app) {
     Post.remove({
       _id: req.params.post_id
     }, function(err, post) {
+      if(err)
+        res.send(err);
+      res.status(200).end();
+    })
+  });
+  
+  app.delete('/api/posts', function(req, res) {
+    console.log(req.params.post_id);
+    Post.remove(function(err, post) {
       if(err)
         res.send(err);
       res.status(200).end();
