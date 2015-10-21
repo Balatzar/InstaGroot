@@ -3,8 +3,9 @@ function editController($scope, userService) {
   var t = JSON.stringify({user: localStorage.getItem("user")});
   var headers = {headers: {params: t }}
 
-  userService.getOne(headers)
+  userService.getOne(localStorage.getItem("user"))
     .success(function(data) {
+      console.log(data);
       $scope.user = data;
     })
     .error(function(data) {

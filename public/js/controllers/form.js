@@ -2,22 +2,35 @@ function formController($scope, userService, $location) {
   var dato = {};
   $scope.log = true;
   $scope.logState = "Sign Up";
+  var t = JSON.stringify({user: $scope.username});
+  var headers = {headers: {params: t }}
+
 
   $scope.createUser = function() {
     dato.name = $scope.name;
     dato.lastname = $scope.lastname;
     dato.username = $scope.username;
     dato.password = $scope.password;
-    userService.post(dato)
-      .then(function(data) {
-        localStorage.setItem("user", dato.username);
-        $scope.name = "";
-        $scope.lastname = "";
+    userService.getOne(dato.username).then(function(res){
+      if (res.data.length == 0) {
+        userService.post(dato)
+        .then(function(data) {
+          localStorage.setItem("user", dato.username);
+          $scope.name = "";
+          $scope.lastname = "";
+          $scope.username = "";
+          $scope.password = "";
+          console.log(data);
+          $location.path('/main');
+        });
+      } else {
+        alert("Ce username est déjà pris!");
         $scope.username = "";
         $scope.password = "";
-        console.log(data);
-        $location.path('/main');
-      });
+      }
+
+  
+    })
   }
 
   $scope.switch = function() {
@@ -36,6 +49,7 @@ function formController($scope, userService, $location) {
      dato.pwd = $scope.password;
      userService.check(dato).then(function(res){
        //SUCCESS
+       localStorage.setItem("user", dato.username);
        console.log(res);
        $location.path('/main');
      }, function(){

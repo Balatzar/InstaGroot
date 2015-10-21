@@ -6,8 +6,8 @@ function userService($http) {
     check: function(data) {
       return $http.post('/api/login', data);
     },
-    getOne: function(headers) {
-      return $http.get('/api/users', headers);
+    getOne: function(user) {
+      return $http.get('/api/users/' + user);
     },
     edit: function(headers, data) {
       return $http.put('/api/users/:id', headers, data);
