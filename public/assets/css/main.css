@@ -54,3 +54,7 @@ form#post input,
 form#post textarea {
   width: 500px;
 }
+
+.click {
+  cursor: pointer;
+}

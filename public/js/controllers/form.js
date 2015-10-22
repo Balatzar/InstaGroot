@@ -11,6 +11,11 @@ function formController($scope, userService, $location) {
 
 
   $scope.createUser = function() {
+    if ($scope.password != $scope.passwordConf) {
+      alert("wrong password confirmation");
+      vidage();
+      return;
+    }
     dato.name = $scope.name;
     dato.lastname = $scope.lastname;
     dato.username = $scope.username;
@@ -20,10 +25,6 @@ function formController($scope, userService, $location) {
         userService.post(dato)
         .then(function(data) {
           localStorage.setItem("user", dato.username);
-          $scope.name = "";
-          $scope.lastname = "";
-          $scope.username = "";
-          $scope.password = "";
           console.log(data);
           $location.path('/main');
         });
@@ -35,6 +36,14 @@ function formController($scope, userService, $location) {
 
   
     })
+  }
+  
+  function vidage() {
+    $scope.name = "";
+    $scope.lastname = "";
+    $scope.username = "";
+    $scope.password = "";
+    $scope.passwordConf = "";
   }
 
   $scope.switch = function() {

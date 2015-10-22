@@ -3,6 +3,7 @@ function editController($scope, userService, $location) {
     $location.path('/');
   
   var dato = {};
+  $scope.okPassword = false;
   var t = JSON.stringify({user: localStorage.getItem("user")});
   var headers = {headers: {params: t }}
   $scope.editing = true;
@@ -12,7 +13,29 @@ function editController($scope, userService, $location) {
   }
   
   $scope.change = function() {
-    $scope.editing = false;
+    $scope.okPassword = true;
+    $scope.askPass = "";
+  }
+  
+  $scope.askPassword = function() {;
+    console.log(dato);
+    console.log($scope.askPass);
+    if ($scope.askPass == dato.password) {
+      $scope.okPassword = false;
+      $scope.editing = false;
+      userService.getOne(localStorage.getItem("user"))
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data) {
+          console.log('Error : ' + data);
+        });
+    }
+    else {
+      alert("NOPE c'est pas le bon code");
+      $scope.okPassword = true;
+      $scope.askPass = "";
+    }
   }
 
   userService.getOne(localStorage.getItem("user"))
@@ -25,6 +48,11 @@ function editController($scope, userService, $location) {
     });
 
   $scope.editUser = function() {
+    if ($scope.password != $scope.passwordConf) {
+      alert("wrong password confirmation");
+      vidage();
+      return;
+    }
     if ($scope.username)
       dato.username = $scope.username;
     if ($scope.password)
@@ -37,13 +65,18 @@ function editController($scope, userService, $location) {
       .success(function(data) {
         localStorage.setItem("user", dato.username);
         $scope.editing = true;
-        $scope.username = "";
-        $scope.password = "";
-        $scope.name = "";
-        $scope.lastname = "";
+        vidage();
       })
       .error(function(data) {
         console.log("erreur" + data);
       })
+  }
+  
+  function vidage() {
+    $scope.name = "";
+    $scope.lastname = "";
+    $scope.username = "";
+    $scope.password = "";
+    $scope.passwordConf = "";
   }
 }

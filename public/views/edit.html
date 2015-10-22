@@ -3,11 +3,15 @@
 
 <div ng-show="editing">
   <div>username : {{user[0].username}}</div>
-  <div>password : {{user[0].password}}</div>
   <div>name : {{user[0].name}}</div>
   <div>lastname : {{user[0].lastname}}</div>
   <button ng-click="change()">edito</button>
 </div>
+
+<form ng-submit="askPassword()"ng-show="okPassword">
+  <input type="password" placeholder="password" ng-model="askPass">
+  <button type="submit">OK</button>
+</form>
 
 <div ng-hide="editing">
   <form ng-hide="log" ng-submit="editUser()">
@@ -17,8 +21,14 @@
               ng-maxlength="20"
               >
 
-    <input type="text" placeholder="password : {{user[0].password}}" 
+    <input type="password" placeholder="Nouveau password" 
               ng-model="password"
+              ng-minlength="6"
+              ng-maxlength="20"
+              >
+
+    <input type="password" placeholder="confirm password" 
+              ng-model="passwordConf"
               ng-minlength="6"
               ng-maxlength="20"
               >
