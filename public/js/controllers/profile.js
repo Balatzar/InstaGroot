@@ -19,4 +19,8 @@ function profileController($scope, postService, userService, $location, $routePa
   	.error(function(data) {
   		console.log('error : ' + data);
   	});
+  
+  $scope.goTo = function(id) {
+    $location.path('/post/' + id);
+  }
 }
