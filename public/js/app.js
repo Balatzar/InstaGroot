@@ -26,17 +26,21 @@ function config($routeProvider) {
 		  templateUrl: 'views/admin.html',
 		  controller: 'adminController'
 	})
-    .when('/post', {
-      templateUrl: 'views/post.html',
-      controller: 'postController'
-	})
-    .when('/post/:post', {
-      templateUrl: 'views/onepost.html',
-      controller: 'onePostController'
-	})
-    .otherwise({
-			redirectTo: '/'
-  })
+        .when('/post', {
+          templateUrl: 'views/post.html',
+          controller: 'postController'
+        })
+        .when('/post/:post', {
+          templateUrl: 'views/onepost.html',
+          controller: 'onePostController'
+        })
+        .when('/main/search', {
+          templateUrl: 'views/search.html',
+          controller: 'searchController'
+        })
+        .otherwise({
+                redirectTo: '/'
+      })
 }
 
 angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
@@ -49,5 +53,6 @@ angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
 	.controller('adminController', adminController)
 	.controller('postController', postController)
 	.controller('onePostController', onePostController)
+	.controller('searchController', searchController)
 	.service('userService', userService)
 	.service('postService', postService)

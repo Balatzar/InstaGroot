@@ -1,7 +1,6 @@
-<p>User : {{user}} || <a href="/#/edit">edit settings</a> - <a ng-click="logout()">Logout</a>
-</p>
-<h1>InstaGroot</h1>
-<button class="photo"><a href="/#/post">Groot ta face !</a></button>
+<a href="/#/main">Back</a>
+<h1>{{title}}</h1>
+
 
 <div ng-repeat="post in posts | orderBy: 'created_at':true">
   <h1>{{post.title}}</h1>

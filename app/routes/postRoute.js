@@ -15,7 +15,7 @@ module.exports = function(app) {
       if (err)
         res.send(err);
       res.status(200).end();
-      var tags = req.body.tags;
+      var tags = JSON.parse(req.body.tags);
       for (i = 0; i < tags.length; ++i) {
         Post.findByIdAndUpdate(
         post._id,
@@ -46,6 +46,16 @@ module.exports = function(app) {
     });
   });
   
+  //get all posts from a search
+  app.post('/api/posts/search', function(req, res) {
+    console.log(req.body)
+    Post.find({tags: req.body.search}, function(err, posts) {
+      if (err)
+        res.send(err);
+      res.json(posts);
+    });
+  });
+  
   // delete a post
   app.delete('/api/posts/:post_id', function(req, res) {
     console.log(req.params.post_id);
@@ -55,7 +65,7 @@ module.exports = function(app) {
       if(err)
         res.send(err);
       res.status(200).end();
-    })
+    });
   });
   
   // delete all posts
