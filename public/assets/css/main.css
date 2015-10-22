@@ -40,6 +40,16 @@ a {
   right: 5%;
 }
 
+.profil {
+  position: fixed;
+  top: 15%;
+  right: 5%;
+}
+
+.post-header * {
+  display: inline-block;
+}
+
 form#post input,
 form#post textarea {
   width: 500px;

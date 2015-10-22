@@ -1,4 +1,11 @@
-function adminController($scope, userService) {
+function adminController($scope, userService, $location) {
+  if (!localStorage.getItem("user"))
+    $location.path('/');
+  
+  $scope.logout = function() {
+    userService.logout($location);
+  }
+  
   // set the default amount of items being displayed
   $scope.limit = 6;
 

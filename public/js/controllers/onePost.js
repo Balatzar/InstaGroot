@@ -1,4 +1,11 @@
-function onePostController($scope, postService, $location, $routeParams) {
+function onePostController($scope, postService, $location, $routeParams, userService) {
+  if (!localStorage.getItem("user"))
+    $location.path('/');
+  
+  $scope.logout = function() {
+    userService.logout($location);
+  }
+  
   var user = localStorage.getItem("user");
   var dato = {};
   $scope.user = user;

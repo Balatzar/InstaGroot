@@ -18,7 +18,6 @@ function editController($scope, userService, $location) {
   userService.getOne(localStorage.getItem("user"))
     .success(function(data) {
       dato = data[0];
-      console.log(dato);
       $scope.user = data;
     })
     .error(function(data) {
