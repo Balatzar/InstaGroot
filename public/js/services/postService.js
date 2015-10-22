@@ -5,6 +5,9 @@ function postService($http) {
     },
     getAll: function() {
       return $http.get('/api/posts');
+    },
+    getOne: function(id) {
+      return $http.get('/api/posts/' + id);
     }
   }
 } 

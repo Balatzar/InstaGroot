@@ -18,4 +18,8 @@ function mainController($scope, $http, userService, postService, $location ) {
     .error(function(data) {
       console.log('Error: ' + data);
     });;
+  
+  $scope.goTo = function(id) {
+    $location.path('/post/' + id);
+  }
 }

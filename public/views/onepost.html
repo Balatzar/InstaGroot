@@ -3,10 +3,10 @@
 <h1>InstaGroot</h1>
 <button class="photo"><a href="/#/post">Groot ta face !</a></button>
 
-<div ng-repeat="post in posts | orderBy: 'created_at':true">
+<div>
   <h1>{{post.title}}</h1>
   <h3>{{post.created_at}}</h3>
-  <img ng-click="goTo(post._id)" src="{{post.photo}}">
+  <img src="{{post.photo}}">
   <p>{{post.description}}</p>
   <p>{{post.tags}}</p>
 </div>

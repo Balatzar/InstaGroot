@@ -50,7 +50,6 @@ module.exports = function(app) {
   
   // update user
   app.put('/api/users/:user_id', function(req, res){
-    console.log(req.body)
     User.update({
         _id: req.params.user_id
     }, {$set: {username: req.body.username,
