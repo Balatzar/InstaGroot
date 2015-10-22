@@ -38,8 +38,12 @@ function config($routeProvider) {
 	      templateUrl: 'views/profile.html',
 	      controller: 'profileController'
 	})
-    .otherwise({
-			redirectTo: '/'
+        .when('/main/search', {
+          templateUrl: 'views/search.html',
+          controller: 'searchController'
+        })
+        .otherwise({
+          redirectTo: '/'
   })
 }
 
@@ -54,5 +58,6 @@ angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
 	.controller('postController', postController)
 	.controller('onePostController', onePostController)
 	.controller('profileController',profileController)
+	.controller('searchController', searchController)
 	.service('userService', userService)
 	.service('postService', postService)
