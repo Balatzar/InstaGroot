@@ -7,8 +7,7 @@ function postController($scope, postService) {
     dato.author = $scope.user;
     dato.picture = $scope.vm.picture;
     dato.title = $scope.$$childTail.title;
-    dato.description = $scope.$$childTail.description;
-    dato.tags = $scope.$$childTail.tags;
+    getTags($scope.$$childTail.description);
     console.log(dato);
     postService.post(dato)
       .success(function(data) {
@@ -17,5 +16,30 @@ function postController($scope, postService) {
       .error(function(data) {
         console.log('Error : ' + data);
       });
+  }
+  
+  function getTags(desc) {
+    var description = "";
+    var tags = [];
+    var i = 0;
+    var j = 0;
+    var temp = "";
+    var inTag = false;
+    while (desc[i]) {
+      if (!inTag && desc[i] != "#")
+        description += desc[i];
+      else if (desc[i] != ' ') {
+        temp += desc[i]
+        tags[j] = temp;
+      }
+      else {
+        inTag = false;
+        temp = "";
+        ++j;
+      }
+      ++i;
+    }
+    dato.description = description;
+    dato.tags = tags;
   }
 }

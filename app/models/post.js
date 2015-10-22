@@ -6,7 +6,7 @@ module.exports = mongoose.model('Post', {
   title: String,
   author: String,
   description: String,
-  tags: String,
+  tags : [],
   created_at: {type: Date, default: new Date()},
   photo: String
 });
