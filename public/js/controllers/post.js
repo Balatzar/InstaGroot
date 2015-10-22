@@ -31,6 +31,7 @@ function postController($scope, postService) {
       else if (desc[i] != ' ') {
         temp += desc[i]
         tags[j] = temp;
+        inTag = true;
       }
       else {
         inTag = false;
@@ -39,6 +40,8 @@ function postController($scope, postService) {
       }
       ++i;
     }
+    console.log(description);
+    console.log(tags);
     dato.description = description;
     dato.tags = tags;
   }

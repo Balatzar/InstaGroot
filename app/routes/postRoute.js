@@ -15,7 +15,7 @@ module.exports = function(app) {
       if (err)
         res.send(err);
       res.status(200).end();
-      var tags = JSON.parse(req.body.tags);
+      var tags = req.body.tags;
       for (i = 0; i < tags.length; ++i) {
         Post.findByIdAndUpdate(
         post._id,
