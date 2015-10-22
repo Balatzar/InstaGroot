@@ -4,9 +4,7 @@
 <button class="photo"><a href="/#/post">Groot ta face !</a></button>
 
 <div>
-  <h1>{{post.title}}</h1>
-  <h3>{{post.created_at}}</h3>
+  <div class="post-header"><h2>{{post.title}}</h2> by <h3><a href="/#/profile/{{post.author}}">{{post.author}}</a></h3></div>
   <img src="{{post.photo}}">
-  <p>{{post.description}}</p>
-  <p>{{post.tags}}</p>
+  <p>{{post.description}}<a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a></p>
 </div>

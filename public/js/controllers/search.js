@@ -1,4 +1,4 @@
-function searchController($scope, postService) {
+function searchController($scope, postService, $location) {
   var url = self.location.href;
   var search = ""
   var i = 0;
@@ -15,5 +15,9 @@ function searchController($scope, postService) {
     $scope.posts = res.data;
   }), function(res) {
     console.log("erreur" + res);
+  }
+  
+  $scope.goTo = function(id) {
+    $location.path('/post/' + id);
   }
 }
