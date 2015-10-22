@@ -26,13 +26,17 @@ function config($routeProvider) {
 		  templateUrl: 'views/admin.html',
 		  controller: 'adminController'
 	})
-    .when('/post', {
-      templateUrl: 'views/post.html',
-      controller: 'postController'
+    	.when('/post', {
+	      templateUrl: 'views/post.html',
+	      controller: 'postController'
 	})
-    .when('/post/:post', {
-      templateUrl: 'views/onepost.html',
-      controller: 'onePostController'
+    	.when('/post/:post', {
+	      templateUrl: 'views/onepost.html',
+	      controller: 'onePostController'
+	})
+    	.when('/profile/:username', {
+	      templateUrl: 'views/profile.html',
+	      controller: 'profileController'
 	})
     .otherwise({
 			redirectTo: '/'
@@ -49,5 +53,6 @@ angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
 	.controller('adminController', adminController)
 	.controller('postController', postController)
 	.controller('onePostController', onePostController)
+	.controller('profileController',profileController)
 	.service('userService', userService)
 	.service('postService', postService)

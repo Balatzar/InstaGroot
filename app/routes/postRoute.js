@@ -38,6 +38,16 @@ module.exports = function(app) {
     });
   });
   
+  // get all posts of a user
+  app.get('/api/posts', function(req, res) {
+    console.log(req)
+    Post.find({"author": req.body.author}, function(err, posts) {
+      if (err)
+        res.send(err);
+      res.json(posts);
+    });
+  });
+
   // delete a post
   app.delete('/api/posts/:post_id', function(req, res) {
     console.log(req.params.post_id);
