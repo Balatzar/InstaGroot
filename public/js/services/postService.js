@@ -8,6 +8,9 @@ function postService($http) {
     },
     getOne: function(id) {
       return $http.get('/api/posts/' + id);
+    },
+    getAllOne: function(data) {
+      return $http.get('/api/posts', data);
     }
   }
 } 
