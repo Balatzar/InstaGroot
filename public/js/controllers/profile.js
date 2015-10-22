@@ -1,4 +1,4 @@
-function profileController($scope, postService) {
+function profileController($scope, postService, userService) {
   var user = localStorage.getItem("user");
   var dato  = {};
   dato.author = user;

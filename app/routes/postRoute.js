@@ -39,7 +39,7 @@ module.exports = function(app) {
   });
   
   // get all posts of a user
-  app.get('/api/posts', function(req, res) {
+  app.post('/api/posts/all', function(req, res) {
     console.log(req)
     Post.find({"author": req.body.author}, function(err, posts) {
       if (err)

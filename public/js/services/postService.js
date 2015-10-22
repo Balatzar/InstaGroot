@@ -10,7 +10,7 @@ function postService($http) {
       return $http.get('/api/posts/' + id);
     },
     getAllOne: function(data) {
-      return $http.get('/api/posts', data);
+      return $http.post('/api/posts/all', data);
     }
   }
 } 
