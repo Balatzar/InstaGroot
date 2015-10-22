@@ -1,4 +1,4 @@
-function mainController($scope, $http, userService, postService, $location ) {
+function mainController($scope, $http, userService, postService, $location) {
   if (!localStorage.getItem("user"))
     $location.path('/');
   
@@ -17,6 +17,7 @@ function mainController($scope, $http, userService, postService, $location ) {
     .error(function(data) {
       console.log('Error: ' + data);
     });
+  
   $scope.goTo = function(id) {
     $location.path('/post/' + id);
   }
