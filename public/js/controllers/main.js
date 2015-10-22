@@ -13,7 +13,6 @@ function mainController($scope, $http, userService, postService, $location ) {
   postService.getAll()
     .success(function(data) {
       $scope.posts = data;
-      console.log(data);
     })
     .error(function(data) {
       console.log('Error: ' + data);

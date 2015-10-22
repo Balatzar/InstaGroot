@@ -20,6 +20,7 @@ module.exports = function(app) {
   // get all todos from a list
   app.get('/api/todos', function(req, res) {
     var params = JSON.parse(req.headers.params);
+    console.log(req.headers.params);
     Todo.find({"list": params.list}, function(err, todos) {
       if (err)
         res.send(err);

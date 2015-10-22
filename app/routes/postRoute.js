@@ -21,8 +21,8 @@ module.exports = function(app) {
   });
   
   // get one post
-  app.get('/api/posts/:post_id', function(req, res) {
-    Post.find({"_id": req.params._id}, function(err, posts) {
+  app.get('/api/posts/:id', function(req, res) {
+    Post.find({"_id": req.params.id}, function(err, posts) {
       if (err)
         res.send(err);
       res.json(posts);

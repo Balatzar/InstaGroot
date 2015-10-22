@@ -3,12 +3,10 @@ function onePostController($scope, postService, $location, $routeParams) {
   var dato = {};
   $scope.user = user;
   var postId = $routeParams.post;
-  console.log(postId);
   
   postService.getOne(postId)
     .success(function(data) {
-      console.log(data);
-      $scope.post = data;
+      $scope.post = data[0];
     })
     .error(function(data) {
       console.log('Error : ' + data);
