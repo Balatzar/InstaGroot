@@ -13,7 +13,8 @@ function formController($scope, userService, $location) {
   $scope.createUser = function() {
     if ($scope.password != $scope.passwordConf) {
       alert("wrong password confirmation");
-      vidage();
+      $scope.password = "";
+      $scope.passwordConf = "";
       return;
     }
     dato.name = $scope.name;

@@ -15,10 +15,12 @@ function postController($scope, postService, userService, $location) {
     dato.picture = $scope.vm.picture;
     dato.title = $scope.$$childTail.title;
     getTags($scope.$$childTail.description);
-    console.log(dato);
     postService.post(dato)
       .success(function(data) {
         console.log(data);
+        $scope.$$childTail.title = "";
+        $scope.$$childTail.description = "";
+        $location.path("/main");
       })
       .error(function(data) {
         console.log('Error : ' + data);
