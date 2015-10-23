@@ -11,6 +11,17 @@ function profileController($scope, postService, userService, $location, $routePa
   var dato  = {};
   dato.author = userInUrl;
   $scope.user = user;
+  var afterLoad = false;
+  
+  // set the default amount of items being displayed
+  $scope.limit = 5;
+
+  // loadMore function
+  $scope.loadMore = function() {
+    if(afterLoad === true)
+      $scope.limit += 5;
+    afterLoad = true;
+  };
 
   postService.getAllOne(dato)
   	.success(function(data){
