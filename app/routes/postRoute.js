@@ -55,6 +55,27 @@ module.exports = function(app) {
     });
   });
   
+  // update all posts of a user
+  app.put('/api/posts/all', function(req, res) {
+   Post.find({author: req.body.oldUsername},
+    function(err, posts) {
+      if (err)
+        res.send(err);
+      for (var i = 0; i < posts.length; i++) {
+        Post.findByIdAndUpdate(
+          posts[i]._id,
+          {author : req.body.username},
+          function(err) {
+            if (err)
+              console.log(err)
+            res.status(200).end();
+          }
+        )
+      }
+      res.json(posts);
+    });
+  });
+  
   //get all posts from a search
   app.post('/api/posts/search', function(req, res) {
     console.log(req.body)

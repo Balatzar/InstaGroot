@@ -12,6 +12,9 @@ function postService($http) {
     getAllOne: function(data) {
       return $http.post('/api/posts/all', data);
     },
+    updateAllOne: function(data) {
+      return $http.put('/api/posts/all', data);
+    },
     search: function(data) {
       return $http.post('api/posts/search', data);
     }

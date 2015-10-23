@@ -1,4 +1,4 @@
-function editController($scope, userService, $location) {
+function editController($scope, userService, postService, $location) {
   if (!localStorage.getItem("user"))
     $location.path('/');
   
@@ -53,8 +53,17 @@ function editController($scope, userService, $location) {
       vidage();
       return;
     }
-    if ($scope.username)
+    if ($scope.username) {
+      dato.oldUsername = localStorage.getItem("user");
       dato.username = $scope.username;
+      postService.updateAllOne(dato)
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data) {
+          console.log(data);
+        })
+    }
     if ($scope.password)
       dato.password = $scope.password;
     if ($scope.name)
