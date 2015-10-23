@@ -9,6 +9,17 @@ function mainController($scope, $http, userService, postService, $location) {
   var user = localStorage.getItem("user");
   var dato = {};
   $scope.user = user;
+  var afterLoad = false;
+  
+  // set the default amount of items being displayed
+  $scope.limit = 5;
+
+  // loadMore function
+  $scope.loadMore = function() {
+    if(afterLoad === true)
+      $scope.limit += 5;
+    afterLoad = true;
+  };
   
   postService.getAll()
     .success(function(data) {
