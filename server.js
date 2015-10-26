@@ -21,8 +21,6 @@ app.use(methodOverride());
 
 // routes ==========================
 
-require('./app/routes/todoRoute.js')(app);
-require('./app/routes/listRoute.js')(app);
 require('./app/routes/userRoute.js')(app);
 require('./app/routes/postRoute.js')(app);
 
