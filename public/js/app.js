@@ -14,14 +14,6 @@ function config($routeProvider) {
 		  templateUrl: 'views/edit.html',
 		  controller: 'editController'
 	})
-		.when('/todo', {
-		  templateUrl: 'views/todo.html',
-		  controller: 'todoController'
-	})
-		.when('/list/:list', {
-		  templateUrl: 'views/list.html',
-		  controller: 'listController'
-	})
 		.when('/admin', {
 		  templateUrl: 'views/admin.html',
 		  controller: 'adminController'
@@ -49,8 +41,6 @@ function config($routeProvider) {
 
 angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
 	.config(config)
-	.controller('todoController', todoController)
-	.controller('listController', listController)
 	.controller('formController', formController)
 	.controller('mainController', mainController)
 	.controller('editController', editController)
