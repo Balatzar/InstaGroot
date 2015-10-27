@@ -6,8 +6,19 @@
 
 <div infinite-scroll='loadMore()'>
   <div ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
-    <div class="post-header"><h2 ng-click="goTo(post._id)">{{post.title}}</h2> by <h3><a href="/#/profile/{{post.author}}">{{post.author}}</a></h3></div>
+    <div class="post-header">
+      <h2 class="click" ng-click="goTo(post._id)">{{post.title}}</h2>
+       by
+      <h3>
+        <a href="/#/profile/{{post.author}}">{{post.author}}</a>
+      </h3>
+    </div>
     <img ng-click="goTo(post._id)" src="{{post.photo}}">
-    <p>{{post.description}} <span ng-repeat="tag in post.tags"><a href="/#/main/search{{tag}}">{{tag}}</a><span>&nbsp</span></span></p>
-  </div>
-</div>
+    <p>{{post.description}}
+      <span ng-repeat="tag in post.tags">
+        <a href="/#/main/search{{tag}}">{{tag}}</a>
+        <span>&nbsp;</span>
+      </span>
+    </p>
+  </div> <!--NG REPEAT-->
+</div> <!--INFINITE SCROLL-->
