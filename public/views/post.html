@@ -21,7 +21,8 @@
          ng-model="title"
          pattern=".{2,20}"
          required title="entre 2 et 20 miaous">
-  <img ng-src="{{vm.picture}}" alt="webcam picture">
+  <canvas width="500" height="500" id="picCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
+  <img id="vmPic" ng-click="filter()" ng-src="{{vm.picture}}" alt="webcam picture">
   <input type="text" placeholder="Description" ng-model="description">
   <button type="submit">sauvegarder</button>
 </form>
