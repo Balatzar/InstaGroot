@@ -1,18 +1,18 @@
  <button  class="titre" ng-click="switch()">{{logState}}</button>
- 
+
 <h1>InstaGroot</h1>
 
- 
+
 <form ng-show="log" ng-submit="checkUser()">
 
   <h2>Log In</h2>
-  <input type="text" placeholder="username" 
+  <input type="text" placeholder="username"
         ng-model="username"
         pattern=".{3,10}"
         required title="entre 3 et 20 miaous"
         required>
 
-  <input type="password" placeholder="password" 
+  <input type="password" placeholder="password"
         ng-model="password"
         pattern=".{6,15}"
         required title="entre 6 et 15 miaous"
@@ -24,35 +24,35 @@
 
  <form ng-hide="log" ng-submit="createUser()">
   <h2>Sign Up</h2>
-  <input type="text" placeholder="name" 
-  			ng-model="name"
-  			ng-minlength="3"
+  <input type="text" placeholder="name"
+        ng-model="name"
+        ng-minlength="3"
             ng-maxlength="20"
             required>
 
-  <input type="text" placeholder="lastname" 
-  			ng-model="lastname"
-  			ng-minlength="3"
+  <input type="text" placeholder="lastname"
+        ng-model="lastname"
+        ng-minlength="3"
             ng-maxlength="20"
             required>
 
-  <input type="text" placeholder="username" 
-  			ng-model="username"
-  			ng-minlength="3"
+  <input type="text" placeholder="username"
+        ng-model="username"
+        ng-minlength="3"
             ng-maxlength="20"
             required title="entre 3 et 20 miaous"
             required>
 
-  <input type="password" placeholder="password" 				  
+  <input type="password" placeholder="password"
              ng-model="password"
-  			ng-minlength="3"
+        ng-minlength="3"
             ng-maxlength="20"
             required title="entre 6 et 15 miaous"
             required>
 
-  <input type="password" placeholder="confirm password" 				  
+  <input type="password" placeholder="confirm password"
              ng-model="passwordConf"
-  			ng-minlength="3"
+        ng-minlength="3"
             ng-maxlength="20"
             required title="entre 6 et 15 miaous"
             required>

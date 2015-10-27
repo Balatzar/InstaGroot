@@ -22,6 +22,7 @@ function onePostController($scope, postService, $location, $routeParams, userSer
   $scope.papote = true;
 
   $scope.papoto = function() {
+    $scope.textMsg = "";
     $scope.papote = false;
   }
 
