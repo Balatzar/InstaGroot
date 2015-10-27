@@ -15,31 +15,31 @@
 
 <div ng-hide="editing">
   <form ng-hide="log" ng-submit="editUser()">
-    <input type="text" placeholder="username : {{user[0].username}}" 
+    <input type="text" placeholder="username : {{user[0].username}}"
               ng-model="username"
               ng-minlength="3"
               ng-maxlength="20"
               >
 
-    <input type="password" placeholder="Nouveau password" 
+    <input type="password" placeholder="Nouveau password"
               ng-model="password"
               ng-minlength="6"
               ng-maxlength="20"
               >
 
-    <input type="password" placeholder="confirm password" 
+    <input type="password" placeholder="confirm password"
               ng-model="passwordConf"
               ng-minlength="6"
               ng-maxlength="20"
               >
 
-    <input type="text" placeholder="name : {{user[0].name}}" 
+    <input type="text" placeholder="name : {{user[0].name}}"
               ng-model="name"
               ng-minlength="3"
               ng-maxlength="20"
               >
 
-    <input type="password" placeholder="lastname : {{user[0].lastname}}" 				  
+    <input type="password" placeholder="lastname : {{user[0].lastname}}"
                ng-model="lastname"
               ng-minlength="3"
               ng-maxlength="20"
