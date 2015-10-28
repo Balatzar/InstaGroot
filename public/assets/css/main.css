@@ -112,6 +112,22 @@ form#post textarea {
   margin-bottom: 0;
 }
 
+.post .message {
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eeefef;
+}
+
+.post .message span {
+  display: block;
+}
+
+.post .message span * {
+  display: inline;
+}
+
 /*Filtres photo*/
 .blur {
   -webkit-filter: blur(3px);
