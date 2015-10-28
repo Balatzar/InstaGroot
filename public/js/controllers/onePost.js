@@ -18,4 +18,15 @@ function onePostController($scope, postService, $location, $routeParams, userSer
     .error(function(data) {
       console.log('Error : ' + data);
     });
+
+  $scope.putLike = function(post){
+    alert("miaou");
+    postService.putLike({id:post._id})
+     .success(function(data){
+      alert("miaou2");
+     })
+     .error(function(data){
+        console.log("error");
+     })
+  }
 }

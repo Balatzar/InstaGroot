@@ -107,5 +107,14 @@ module.exports = function(app) {
       res.status(200).end();
     })
   });
+  
+  // update likes
+  app.put('/api/posts/like', function(req, res) {
+   Post.findByIdAndUpdate(req.body.id, {$inc: {likes: 1}}, function (err, data) {
+      if(err)
+        res.send(err);
+      res.json(data);
+   })
+  });
 
 }

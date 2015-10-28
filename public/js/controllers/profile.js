@@ -34,4 +34,15 @@ function profileController($scope, postService, userService, $location, $routePa
   $scope.goTo = function(id) {
     $location.path('/post/' + id);
   }
+
+  $scope.putLike = function(post){
+    alert("miaou");
+    postService.putLike({id:post._id})
+     .success(function(data){
+      alert("miaou2");
+     })
+     .error(function(data){
+        console.log("error");
+     })
+  }
 }
