@@ -23,6 +23,7 @@ app.use(methodOverride());
 
 require('./app/routes/userRoute.js')(app);
 require('./app/routes/postRoute.js')(app);
+require('./app/routes/conversationRoute.js')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(8080);
