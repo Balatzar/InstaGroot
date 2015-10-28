@@ -10,7 +10,8 @@ module.exports = function(app) {
       title: req.body.title,
       author: req.body.author,
       description: req.body.description,
-      photo: req.body.picture
+      photo: req.body.picture,
+      filter: req.body.filter
     }, function(err, post) {
       if (err)
         res.send(err);

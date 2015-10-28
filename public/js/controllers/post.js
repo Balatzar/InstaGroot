@@ -55,17 +55,6 @@ function postController($scope, postService, userService, $location) {
     dato.tags = tags;
   }
   
-  //test canvas
-  $scope.toCanvas = function() {
-    var c = document.getElementById("picCanvas");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById('vmPic');
-    ctx.drawImage(img, 10, 10);
-  }
-  document.querySelector('img').onload = function() {
-    context.drawImage(this, 0, 0, canvas.width, canvas.height);
-  }
-  
   //Function that adds the css class for the pic filters
   var idx = 0;
   var filters = ['grayscale', 'sepia', 'blur', 'brightness',
@@ -76,6 +65,9 @@ function postController($scope, postService, userService, $location) {
     var el = document.querySelector('img');
     el.className = '';
     var effect = filters[idx++ % filters.length]; // loop through filters.
-    if (effect) { el.classList.add(effect); }
+    if (effect) {
+      el.classList.add(effect);
+      dato.filter = effect;
+    } else { dato.picture = ''; }
   }
 }
