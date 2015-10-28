@@ -36,13 +36,15 @@ function mainController($scope, $http, userService, postService, $location) {
   $scope.putLike = function(post){
     postService.putLike({id:post._id})
      .success(function(data){
-      alert("miaou2");
-      console.log(data);
-        $scope.$apply(function($scope, data) {
-          var likes = data.likes;
-          $scope.likes = likes;
-        });
-     })
+        for (var i = 0; i < $scope.posts.length;i++){
+          console.log($scope.posts[i]._id);
+          if (data._id == $scope.posts[i]._id) {
+            $scope.posts[i].likes = data.likes;
+            console.log($scope.posts[i].likes);
+            break;
+          }
+        }
+    })
      .error(function(data){
         console.log("error");
      })

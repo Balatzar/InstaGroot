@@ -22,13 +22,21 @@ function searchController($scope, postService, $location) {
   }
 
   $scope.putLike = function(post){
-    alert("miaou");
     postService.putLike({id:post._id})
      .success(function(data){
-      alert("miaou2");
-     })
+        for (var i = 0; i < $scope.posts.length;i++){
+          console.log($scope.posts[i]._id);
+          if (data._id == $scope.posts[i]._id) {
+            $scope.posts[i].likes = data.likes;
+            console.log($scope.posts[i].likes);
+            break;
+          }
+        }
+    })
      .error(function(data){
         console.log("error");
      })
   }
+
+
 }
