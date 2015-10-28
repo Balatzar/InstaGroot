@@ -23,7 +23,6 @@ function onePostController($scope, postService, $location, $routeParams, userSer
     alert("miaou");
     postService.putLike({id:post._id})
      .success(function(data){
-      alert("miaou2");
      })
      .error(function(data){
         console.log("error");

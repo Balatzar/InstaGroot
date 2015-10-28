@@ -7,4 +7,5 @@
   <div class="post-header"><h2>{{post.title}}</h2> by <h3><a href="/#/profile/{{post.author}}">{{post.author}}</a></h3></div>
   <img src="{{post.photo}}">
   <p>{{post.description}}<a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a></p>
+  <button style="color: red" ng-click="putLike(post)">Like {{post.likes}}</button>
 </div>

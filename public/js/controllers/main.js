@@ -34,10 +34,14 @@ function mainController($scope, $http, userService, postService, $location) {
   }
 
   $scope.putLike = function(post){
-    alert("miaou");
     postService.putLike({id:post._id})
      .success(function(data){
       alert("miaou2");
+      console.log(data);
+        $scope.$apply(function($scope, data) {
+          var likes = data.likes;
+          $scope.likes = likes;
+        });
      })
      .error(function(data){
         console.log("error");
