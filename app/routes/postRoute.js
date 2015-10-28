@@ -1,9 +1,10 @@
 var Post = require('../models/post.js');
+var Message = require('../models/message.js');
 
 module.exports = function(app) {
-  
+
   /*CRUD POST*/
-  
+
   // create post
   app.post('/api/posts', function(req, res) {
     Post.create({
@@ -28,7 +29,7 @@ module.exports = function(app) {
       }
     });
   });
-  
+
   // get one post
   app.get('/api/posts/:id', function(req, res) {
     Post.find({"_id": req.params.id}, function(err, posts) {
@@ -37,7 +38,7 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
-  
+
   // get all posts
   app.get('/api/posts', function(req, res) {
     Post.find(function(err, posts) {
@@ -46,7 +47,7 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
-  
+
   // get all posts of a user
   app.post('/api/posts/all', function(req, res) {
     Post.find({"author": req.body.author}, function(err, posts) {
@@ -55,7 +56,7 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
-  
+
   // update all posts of a user
   app.put('/api/posts/all', function(req, res) {
    Post.find({author: req.body.oldUsername},
@@ -76,7 +77,22 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
-  
+
+  // post a message
+  app.put('/api/posts/messages', function(req, res) {
+    Post.findById(req.body.id, function(err, post){
+      if (err)
+        res.send(err);
+      var messageModel = new Message();
+      messageModel.author = req.body.author;
+      messageModel.text = req.body.text;
+      post.message.push(messageModel);
+      post.save();
+      console.log(post);
+      res.json(post);
+    });
+  })
+
   //get all posts from a search
   app.post('/api/posts/search', function(req, res) {
     console.log(req.body)
@@ -86,7 +102,7 @@ module.exports = function(app) {
       res.json(posts);
     });
   });
-      
+
   // delete a post
   app.delete('/api/posts/:post_id', function(req, res) {
     console.log(req.params.post_id);
@@ -98,7 +114,7 @@ module.exports = function(app) {
       res.status(200).end();
     });
   });
-  
+
   // delete all posts
   app.delete('/api/posts', function(req, res) {
     console.log(req.params.post_id);

@@ -1,10 +1,30 @@
 <p>User : {{user}} || <a href="/#/edit">edit settings</a> - <a ng-click="logout()">Logout</a></p>
 
 <h1>InstaGroot</h1>
-<button class="photo"><a href="/#/post">Groot ta face !</a></button>
+<button class="photo">
+  <a href="/#/post">Groot ta face !</a>
+</button>
+<a href="/#/">Back</a>
 
 <div>
-  <div class="post-header"><h2>{{post.title}}</h2> by <h3><a href="/#/profile/{{post.author}}">{{post.author}}</a></h3></div>
+  <div class="post-header">
+    <h2>{{post.title}}</h2> by
+    <h3>
+      <a href="/#/profile/{{post.author}}">{{post.author}}</a>
+   </h3>
+  </div>
   <img class="{{post.filter}}" src="{{post.photo}}">
-  <p>{{post.description}}<a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a></p>
+  <p>{{post.description}}
+    <a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a>
+  </p>
+  <span class="message" ng-repeat="msg in post.message">
+    <a href="/#/profile/{{msg.author}}">{{msg.author}}</a>
+    <p>{{msg.text}}</p>
+  </span>
 </div>
+
+<button ng-show="papote" ng-click="papoto()">Papoter</button>
+<form ng-hide="papote" ng-submit="sendMsg(post)">
+  <input type="text" ng-model="textMsg">
+  <button type="submit">Papote !</button>
+</form>
