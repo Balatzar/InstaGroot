@@ -1,6 +1,14 @@
 body {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+.font-satisfy {
+  font-family: 'Satisfy', cursive;
+  font-size: 60px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  text-align: center;
 }
 
 footer {
@@ -30,8 +38,15 @@ canva {
   display: none;
 }
 
-a {
+a, a:visited {
+  color: #1368a7;
+  text-decoration: none;
   cursor: pointer;
+}
+
+a:hover {
+  color: #0d4872;
+  text-decoration: none;
 }
 
 .photo {
@@ -46,8 +61,32 @@ a {
   right: 5%;
 }
 
+.post {
+  background-color: #fff;
+  border: 2px solid #edeeee;
+  border-radius: 3px;
+  margin-bottom: 60px;
+  width: 504px;
+}
+
 .post-header * {
-  display: inline-block;
+  display: inline;
+}
+
+.post-header {
+  width: 500px;
+  height: 64px;
+  padding: 14px 20px;
+}
+
+.post-header #date {
+  color: #a5a7aa;
+  position: relative;
+  float: right;
+}
+
+.post-footer {
+  padding: 0 24px;
 }
 
 form#post input,

@@ -17,10 +17,6 @@
 ></ng-camera>
 
 <form id="post" ng-if="vm.picture" ng-submit="jeclick()">
-  <input type="text" placeholder="Titre" 
-         ng-model="title"
-         pattern=".{2,20}"
-         required title="entre 2 et 20 miaous">
   <img ng-click="filter()" id="vmPic" ng-src="{{vm.picture}}" alt="webcam picture">
   <input type="text" placeholder="Description" ng-model="description">
   <button type="submit">sauvegarder</button>

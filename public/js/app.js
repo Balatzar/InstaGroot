@@ -47,7 +47,7 @@ function config($routeProvider) {
   })
 }
 
-angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
+angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll', 'angularMoment'])
 	.config(config)
 	.controller('formController', formController)
 	.controller('mainController', mainController)
