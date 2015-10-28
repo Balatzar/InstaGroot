@@ -61,12 +61,26 @@ a:hover {
   right: 5%;
 }
 
+.click {
+  cursor: pointer;
+}
+
+form#post input,
+form#post textarea {
+  width: 500px;
+}
+
+/*Posts style*/
 .post {
   background-color: #fff;
   border: 2px solid #edeeee;
   border-radius: 3px;
   margin-bottom: 60px;
   width: 504px;
+}
+
+.post-username {
+  font-weight: 600;
 }
 
 .post-header * {
@@ -86,16 +100,16 @@ a:hover {
 }
 
 .post-footer {
-  padding: 0 24px;
+  margin-top: -10px;
+  padding: 15px 24px;
 }
 
-form#post input,
-form#post textarea {
-  width: 500px;
+.post-footer * {
+  display: inline;
 }
 
-.click {
-  cursor: pointer;
+.post-footer p {
+  margin-bottom: 0;
 }
 
 /*Filtres photo*/
