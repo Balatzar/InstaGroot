@@ -13,7 +13,7 @@
       <a href="/#/profile/{{post.author}}">{{post.author}}</a>
    </h3>
   </div>
-  <img src="{{post.photo}}">
+  <img class="{{post.filter}}" src="{{post.photo}}">
   <p>{{post.description}}
     <a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a>
   </p>

@@ -21,7 +21,7 @@
          ng-model="title"
          pattern=".{2,20}"
          required title="entre 2 et 20 miaous">
-  <img ng-src="{{vm.picture}}" alt="webcam picture">
+  <img ng-click="filter()" id="vmPic" ng-src="{{vm.picture}}" alt="webcam picture">
   <input type="text" placeholder="Description" ng-model="description">
   <button type="submit">sauvegarder</button>
 </form>
