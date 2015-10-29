@@ -1,18 +1,18 @@
 function profileController($scope, postService, userService, $location, $routeParams) {
   if (!localStorage.getItem("user"))
     $location.path('/');
-  
+
   $scope.logout = function() {
     userService.logout($location);
   }
-  
+
   var user = localStorage.getItem("user");
   var userInUrl = $routeParams.username;
   var dato  = {};
   dato.author = userInUrl;
   $scope.user = user;
   var afterLoad = false;
-  
+
   // set the default amount of items being displayed
   $scope.limit = 5;
 
@@ -24,13 +24,14 @@ function profileController($scope, postService, userService, $location, $routePa
   };
 
   postService.getAllOne(dato)
-  	.success(function(data){
-  		$scope.posts = data;
-  	})
-  	.error(function(data) {
-  		console.log('error : ' + data);
-  	});
-  
+    .success(function(data){
+      $scope.posts = data;
+      $scope.profil = data[0].author;
+    })
+    .error(function(data) {
+      console.log('error : ' + data);
+    });
+
   $scope.goTo = function(id) {
     $location.path('/post/' + id);
   }

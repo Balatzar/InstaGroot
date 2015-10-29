@@ -14,6 +14,10 @@ function config($routeProvider) {
       templateUrl: 'views/edit.html',
       controller: 'editController'
   })
+    .when('/edit/:conv', {
+      templateUrl: 'views/conv.html',
+      controller: 'convController'
+  })
     .when('/todo', {
       templateUrl: 'views/todo.html',
       controller: 'todoController'
@@ -38,6 +42,10 @@ function config($routeProvider) {
       templateUrl: 'views/profile.html',
       controller: 'profileController'
   })
+    .when('/profile/:username/dm', {
+      templateUrl: 'views/dm.html',
+      controller: 'dmController'
+  })
     .when('/main/search', {
       templateUrl: 'views/search.html',
       controller: 'searchController'
@@ -48,14 +56,17 @@ function config($routeProvider) {
 }
 
 angular.module('instagroot', ['ngRoute', 'camera', 'infinite-scroll'])
-	.config(config)
-	.controller('formController', formController)
-	.controller('mainController', mainController)
-	.controller('editController', editController)
-	.controller('adminController', adminController)
-	.controller('postController', postController)
-	.controller('onePostController', onePostController)
-	.controller('profileController', profileController)
-	.controller('searchController', searchController)
-	.service('userService', userService)
-	.service('postService', postService)
+  .config(config)
+  .controller('formController', formController)
+  .controller('mainController', mainController)
+  .controller('editController', editController)
+  .controller('adminController', adminController)
+  .controller('postController', postController)
+  .controller('onePostController', onePostController)
+  .controller('profileController',profileController)
+  .controller('searchController', searchController)
+  .controller('dmController', dmController)
+  .controller('convController', convController)
+  .service('userService', userService)
+  .service('postService', postService)
+  .service('conversationService', conversationService)
