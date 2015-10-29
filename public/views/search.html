@@ -6,4 +6,5 @@
   <h1 class="click" ng-click="goTo(post._id)">{{post.title}}</h1>
   <img class="click" ng-click="goTo(post._id)" src="{{post.photo}}">
   <p>{{post.description}}<a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a></p>
+  <button style="color: red" ng-click="putLike(post)">Like {{post.likes}}</button>
 </div>

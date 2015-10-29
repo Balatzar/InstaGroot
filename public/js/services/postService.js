@@ -16,7 +16,13 @@ function postService($http) {
       return $http.put('/api/posts/all', data);
     },
     search: function(data) {
-      return $http.post('api/posts/search', data);
+      return $http.post('/api/posts/search', data);
+    },
+    putLike: function(data) {
+      return $http.put('/api/posts/like', data);
+    },
+    putUnlike: function(data) {
+      return $http.put('/api/posts/unlike', data);
     }
   }
 } 
