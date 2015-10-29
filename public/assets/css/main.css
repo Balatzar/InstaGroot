@@ -168,6 +168,10 @@ form#post input {
   width: 504px;
 }
 
+.post button {
+  /*background-color: #fff;*/
+}
+
 .post-username {
   font-weight: 600;
 }
