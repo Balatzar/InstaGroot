@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   max-width: 500px;
   margin: 0 auto;

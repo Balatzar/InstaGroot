@@ -4,13 +4,12 @@ function editController($scope, userService, postService, $location, conversatio
 
   var author = localStorage.getItem("user");
   var dato = {};
-  $scope.tab = 1;
+  $scope.tab = 2;
   $scope.okPassword = false;
-  var t = JSON.stringify({user: localStorage.getItem("user")});
+  var t = JSON.stringify({user:   localStorage.getItem("user")});
   var headers = {headers: {params: t }}
   $scope.editing = true;
   var tabs = document.querySelectorAll(".tab");
-  console.log(tabs)
 
   $scope.logout = function() {
     userService.logout($location);
@@ -20,7 +19,6 @@ function editController($scope, userService, postService, $location, conversatio
 
   postService.getAllOne(dato)
     .success(function(data){
-      console.log(data)
       $scope.posts = data;
       $scope.profil = author;
     })
@@ -52,7 +50,6 @@ function editController($scope, userService, postService, $location, conversatio
   dato.search = user;
   conversationService.get(dato)
     .success(function(data) {
-    console.info(data);
     var lastMsg = [];
     var friends = [];
     if (data.length) {
@@ -77,11 +74,9 @@ function editController($scope, userService, postService, $location, conversatio
       }
     }
     $scope.lastMsg = lastMsg;
-    console.log(lastMsg)
-    console.log(friends)
     })
     .error(function(data) {
-      console.log(data);
+      console.warn(data);
     });
 
   $scope.change = function() {
@@ -89,19 +84,11 @@ function editController($scope, userService, postService, $location, conversatio
     $scope.askPass = "";
   }
 
-  $scope.askPassword = function() {;
-    console.log(dato);
-    console.log($scope.askPass);
-    if ($scope.askPass == dato.password) {
+  $scope.askPassword = function() {
+    var pass = $scope.$$childTail.askPass;
+    if (pass == dato.password) {
       $scope.okPassword = false;
       $scope.editing = false;
-      userService.getOne(localStorage.getItem("user"))
-        .success(function(data) {
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log('Error : ' + data);
-        });
     }
     else {
       alert("NOPE c'est pas le bon code");
@@ -119,15 +106,15 @@ function editController($scope, userService, postService, $location, conversatio
       console.log('Error : ' + data);
     });
 
-  $scope.editUser = function() {
-    if ($scope.password != $scope.passwordConf) {
+    $scope.editUser = function() {
+    if ($scope.$$childTail.password != $scope.$$childTail.passwordConf) {
       alert("wrong password confirmation");
       vidage();
       return;
     }
     if ($scope.username) {
       dato.oldUsername = localStorage.getItem("user");
-      dato.username = $scope.username;
+      dato.username = $scope.$$childTail.username;
       postService.updateAllOne(dato)
         .success(function(data) {
           console.log(data);
@@ -136,12 +123,12 @@ function editController($scope, userService, postService, $location, conversatio
           console.log(data);
         })
     }
-    if ($scope.password)
-      dato.password = $scope.password;
-    if ($scope.name)
-      dato.name = $scope.name;
-    if ($scope.lastname)
-      dato.lastname = $scope.lastname;
+    if ($scope.$$childTail.password)
+      dato.password = $scope.$$childTail.password;
+    if ($scope.$$childTail.name)
+      dato.name = $scope.$$childTail.name;
+    if ($scope.$$childTail.lastname)
+      dato.lastname = $scope.$$childTail.lastname;
     userService.edit(dato._id, dato)
       .success(function(data) {
         localStorage.setItem("user", dato.username);
