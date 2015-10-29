@@ -18,6 +18,12 @@ function postService($http) {
     search: function(data) {
       return $http.post('/api/posts/search', data);
     },
+    putLike: function(data) {
+      return $http.put('/api/posts/like', data);
+    },
+    putUnlike: function(data) {
+      return $http.put('/api/posts/unlike', data);
+    },
     message: function(data) {
       return $http.put('/api/posts/messages', data);
     }

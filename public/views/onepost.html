@@ -31,4 +31,5 @@
   <form class="papoter" ng-submit="sendMsg(post)">
     <input type="text" placeholder="Papoter..." ng-model="textMsg">
   </form>
+  <button style="color: red" ng-click="putLike(post)"><i class="fa fa-heart"></i> {{post.likes}}</button>
 </div>

@@ -1,15 +1,15 @@
 function postController($scope, postService, userService, $location) {
   if (!localStorage.getItem("user"))
     $location.path('/');
-  
+
   $scope.logout = function() {
     userService.logout($location);
   }
-  
+
   var user = localStorage.getItem("user");
   var dato = {};
   $scope.user = user;
-  
+
   $scope.jeclick = function(){
     dato.author = $scope.user;
     dato.picture = $scope.vm.picture;
@@ -24,7 +24,7 @@ function postController($scope, postService, userService, $location) {
         console.log('Error : ' + data);
       });
   }
-  
+
   function getTags(desc) {
     var description = "";
     var tags = [];
@@ -52,20 +52,50 @@ function postController($scope, postService, userService, $location) {
     dato.description = description;
     dato.tags = tags;
   }
-  
-  //Function that adds the css class for the pic filters
-  var idx = 0;
-  var filters = ['grayscale', 'sepia', 'blur', 'brightness',
-                'contrast', 'hue-rotate', 'hue-rotate2',
-                'hue-rotate3', 'saturate', 'invert', ''];
-  
-  $scope.filter = function() {
-    var el = document.querySelector('img');
-    el.className = '';
-    var effect = filters[idx++ % filters.length]; // loop through filters.
-    if (effect) {
-      el.classList.add(effect);
-      dato.filter = effect;
-    } else { dato.picture = ''; }
+
+  $scope.putLike = function(post) {
+    if (post.likes.indexOf(user) == -1) {
+      postService.putLike({id:post._id, user:user})
+     .success(function(data){
+        for (var i = 0; i < $scope.posts.length;i++){
+          if (data._id == $scope.posts[i]._id) {
+            $scope.posts[i].likes = data.likes;
+            break;
+          }
+        }
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    } else {
+      postService.putUnlike({id:post._id, user:user})
+       .success(function(data){
+          for (var i = 0; i < $scope.posts.length;i++){
+            if (data._id == $scope.posts[i]._id) {
+              $scope.posts[i].likes = data.likes;
+              break;
+            }
+          }
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    }
+
+    //Function that adds the css class for the pic filters
+    var idx = 0;
+    var filters = ['grayscale', 'sepia', 'blur', 'brightness',
+                  'contrast', 'hue-rotate', 'hue-rotate2',
+                  'hue-rotate3', 'saturate', 'invert', ''];
+
+    $scope.filter = function() {
+      var el = document.querySelector('img');
+      el.className = '';
+      var effect = filters[idx++ % filters.length]; // loop through filters.
+      if (effect) {
+        el.classList.add(effect);
+        dato.filter = effect;
+      } else { dato.picture = ''; }
+    }
   }
 }

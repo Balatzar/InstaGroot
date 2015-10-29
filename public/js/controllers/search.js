@@ -1,5 +1,6 @@
 function searchController($scope, postService, $location) {
   $scope.user = localStorage.getItem("user");
+  var user = localStorage.getItem("user");
   var url = self.location.href;
   var search = ""
   var i = 0;
@@ -14,10 +15,10 @@ function searchController($scope, postService, $location) {
   postService.search(dato).then(
   function(res) {
     $scope.posts = res.data;
-  }), function(res) {
+  }, function(res) {
     console.log("erreur" + res);
-  }
-  
+  })
+
   // set the default amount of items being displayed
   var afterLoad = false;
   $scope.limit = 5;
@@ -28,8 +29,52 @@ function searchController($scope, postService, $location) {
       $scope.limit += 5;
     afterLoad = true;
   };
-  
+
   $scope.goTo = function(id) {
     $location.path('/post/' + id);
   }
+
+  $scope.putLike = function(post) {
+    if (post.likes.indexOf(user) == -1) {
+      postService.putLike({id:post._id, user:user})
+     .success(function(data){
+        /*for (var i = 0; i < $scope.posts.length;i++){
+          if (data._id == $scope.posts[i]._id) {
+            $scope.posts[i].likes = data.likes;
+            break;
+          }
+        }*/
+        postService.search(dato).then(
+        function(res) {
+          $scope.posts = res.data;
+        }, function(res) {
+          console.log("erreur" + res);
+        })
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    } else {
+      postService.putUnlike({id:post._id, user:user})
+       .success(function(data){
+          /*for (var i = 0; i < $scope.posts.length;i++){
+            if (data._id == $scope.posts[i]._id) {
+              $scope.posts[i].likes = data.likes;
+              break;
+            }
+          }*/
+        postService.search(dato).then(
+        function(res) {
+          $scope.posts = res.data;
+        }, function(res) {
+          console.log("erreur" + res);
+        })
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    }
+  }
+
+
 }

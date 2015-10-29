@@ -6,7 +6,7 @@ function editController($scope, userService, postService, $location, conversatio
   var dato = {};
   $scope.tab = 2;
   $scope.okPassword = false;
-  var t = JSON.stringify({user:   localStorage.getItem("user")});
+  var t = JSON.stringify({user: localStorage.getItem("user")});
   var headers = {headers: {params: t }}
   $scope.editing = true;
   var tabs = document.querySelectorAll(".tab");
