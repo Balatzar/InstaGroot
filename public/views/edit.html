@@ -28,7 +28,7 @@
     <button type="submit">OK</button>
   </form>
 
-  <div ng-hide="editing">
+  <div ng-hide="editing" class="login">
     <form ng-hide="log" ng-submit="editUser()">
       <input type="text" placeholder="username : {{user[0].username}}"
                 ng-model="username"
@@ -66,11 +66,12 @@
 
 
 <div ng-if="tab == 2">
-  <div ng-repeat="msg in lastMsg | orderBy: 'created_at':true">
+  <div class="conv" ng-repeat="msg in lastMsg | orderBy: 'created_at':true">
     <h3>Papoti entre {{msg.people[0]}} et {{msg.people[1]}}</h3>
     <p>Dernier message :</p>
     <h4>{{msg.messages[0].author}}</h4>
-    <p>{{msg.messages[0].text}}</p>
+    <p style="
+  font-weight: 600;">{{msg.messages[0].text}}</p>
     <a href="/#/edit/{{msg.people[0]}}" ng-if="msg.people[0] != user[0].username">Voir le reste de la conv</a>
     <a href="/#/edit/{{msg.people[1]}}" ng-if="msg.people[1] != user[0].username">Voir le reste de la conv</a>
   </div>

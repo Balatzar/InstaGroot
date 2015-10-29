@@ -9,7 +9,12 @@
 
 <h1 class="font-satisfy">InstaGroot</h1>
 
-<a href="/#/profile/{{profil}}/dm">Papoter avec {{profil}}</a>
+<a class="papote" ng-click="patato()"><i class="fa fa-paper-plane"></i> {{profil}}</a>
+<form ng-hide="patata" ng-submit="startConv()">
+  <input placeholder="envoyer un message" style="margin: 10px auto; text-align: center;" type="text" ng-model="text">
+  <button style="display: block; margin: 0 auto;" type="submit">Papoto !</button>
+</form>
+
 
 <div infinite-scroll='loadMore()'>
   <div class="post" ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
@@ -25,6 +30,6 @@
         <a href="/#/main/search{{tag}}">{{tag}}</a>
       </span>
     </div>
-    <button style="color: red" ng-click="putLike(post)"><i class="fa fa-heart"></i> {{post.likes.length}}</button>
+    <button class="like" style="color: red" ng-click="putLike(post)"><i class="fa fa-heart"></i> {{post.likes.length}}</button>
   </div> <!--NG REPEAT-->
 </div> <!--INFINITE SCROLL-->

@@ -82,6 +82,20 @@ a:hover {
   width: 200px;
 }
 
+.centerify h2 {
+  text-align: center;
+}
+
+.centerify input {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.centerify button {
+  margin: 0 auto;
+  display: block;
+}
+
 /*Header styles*/
 .header {
   background-color: #fff;
@@ -174,8 +188,43 @@ form#post input {
   width: 504px;
 }
 
-.post button {
-  /*background-color: #fff;*/
+.conv {
+  text-align: center;
+  background-color: #fff;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.conv h4 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0e5283;
+  margin-top: -10px;
+}
+
+.conv h3 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.conv p {
+  margin-top: -20px;
+  text-align: center;
+}
+
+.like {
+  background-color: #fff;
+}
+
+.papote {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px
 }
 
 .post-username {

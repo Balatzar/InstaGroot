@@ -1,4 +1,4 @@
-function profileController($scope, postService, userService, $location, $routeParams) {
+function profileController($scope, postService, userService, $location, $routeParams, conversationService) {
   if (!localStorage.getItem("user"))
     $location.path('/');
 
@@ -22,6 +22,30 @@ function profileController($scope, postService, userService, $location, $routePa
       $scope.limit += 5;
     afterLoad = true;
   };
+
+  $scope.patata = true;
+
+  $scope.patato = function() {
+    $scope.patata = false;
+  }
+
+  $scope.startConv = function() {
+    dato.message = {};
+    dato.message.text = $scope.text;
+    dato.message.author = user;
+    var people = [];
+    people.push(user);
+    people.push(userInUrl);
+    dato.authors = people;
+    console.log(dato)
+    conversationService.post(dato)
+      .success(function(data) {
+        $location.path('/edit');
+      })
+      .error(function(data) {
+        console.log(data);
+      })
+  }
 
   postService.getAllOne(dato)
     .success(function(data){

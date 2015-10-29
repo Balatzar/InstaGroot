@@ -1,13 +1,24 @@
-<a href="/#/edit">Back</a> - <a ng-click="logout()">Logout</a>
-<h1>InstaGroot</h1>
-<h2>{{title}}</h2>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user[0].username}}</a>
+  </nav>
+</div>
 
-<form ng-submit="sendMsg()">
-  <input type="text" ng-model="text">
-  <button type="submit">Papoto !</button>
-</form>
+<h1 class="font-satisfy">InstaGroot</h1>
 
-<div ng-repeat="msg in messages | orderBy: 'created_at':true">
-  <h3>{{msg.author}}</h3>
-  <p>{{msg.text}}</p>
+<div class="centerify">
+  <h2>{{title}}</h2>
+
+  <form ng-submit="sendMsg()">
+    <input placeholder="écris un message" type="text" ng-model="text">
+    <button type="submit">Papoto !</button>
+  </form>
+</div>
+
+<div class="conv" ng-repeat="msg in messages | orderBy: 'created_at':true">
+  <h4>{{msg.author}}</h4>
+  <p style="margin-top: 20px">{{msg.text}}</p>
 </div>
