@@ -12,7 +12,13 @@ body {
 }
 
 .center {
-  width: 200px;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.center-tabs {
+  width: 215px;
   margin: 0 auto;
 }
 
