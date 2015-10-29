@@ -10,5 +10,6 @@ module.exports = mongoose.model('Post', {
   tags : [],
   created_at: {type: Date, default: new Date()},
   photo: String,
+  filter: String,
   message: [Message.schema]
 });

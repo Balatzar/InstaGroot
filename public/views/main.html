@@ -12,7 +12,7 @@
         <a href="/#/profile/{{post.author}}">{{post.author}}</a>
       </h3>
     </div>
-    <img ng-click="goTo(post._id)" src="{{post.photo}}">
+    <img class="click {{post.filter}}" ng-click="goTo(post._id)" src="{{post.photo}}">
     <p>{{post.description}}
       <span ng-repeat="tag in post.tags">
         <a href="/#/main/search{{tag}}">{{tag}}</a>
