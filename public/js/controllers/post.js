@@ -84,9 +84,10 @@ function postController($scope, postService, userService, $location) {
 
     //Function that adds the css class for the pic filters
     var idx = 0;
-    var filters = ['grayscale', 'sepia', 'blur', 'brightness',
+    var filters2 = ['grayscale', 'sepia', 'blur', 'brightness',
                   'contrast', 'hue-rotate', 'hue-rotate2',
                   'hue-rotate3', 'saturate', 'invert', ''];
+    var filters = ['aden', 'reyes', 'perpetua', 'inkwell', 'toaster', 'walden', 'hudson', 'gingham', 'mayfair', 'lofi', 'xpro2', '_1997', 'brooklyn', ''];
 
     $scope.filter = function() {
       var el = document.querySelector('img');
