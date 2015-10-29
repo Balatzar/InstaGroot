@@ -182,7 +182,9 @@ form#post input {
   margin-right: 24px;
   margin-bottom: 15px;
   padding-top: 15px;
+  padding-bottom: 15px;
   border-top: 1px solid #eeefef;
+  border-bottom: 1px solid #eeefef;
 }
 
 .post .message span {
@@ -191,6 +193,17 @@ form#post input {
 
 .post .message span * {
   display: inline;
+}
+
+.post .papoter {
+  margin-bottom: 0;
+}
+
+.post .papoter input {
+  padding: 6px 24px 6px 24px;
+  margin-bottom: 15px;
+  border: 0;
+  width: 500px;
 }
 
 /*Filtres photo*/

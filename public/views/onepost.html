@@ -28,10 +28,7 @@
       <p>{{msg.text}}</p>
     </span>
   </div>
+  <form class="papoter" ng-submit="sendMsg(post)">
+    <input type="text" placeholder="Papoter..." ng-model="textMsg">
+  </form>
 </div>
-
-<button ng-show="papote" ng-click="papoto()">Papoter</button>
-<form ng-hide="papote" ng-submit="sendMsg(post)">
-  <input type="text" ng-model="textMsg">
-  <button type="submit">Papote !</button>
-</form>
