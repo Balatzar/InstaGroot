@@ -3,11 +3,11 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('Post', {
-  title: String,
+  title : String,
   author: String,
   description: String,
-  tags : [],
+  tags  : [],
   created_at: {type: Date, default: new Date()},
-  photo: String,
-  likes: {type: Number, default: 0}
+  photo : String,
+  likes : []
 });

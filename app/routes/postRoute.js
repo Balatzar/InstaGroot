@@ -108,13 +108,28 @@ module.exports = function(app) {
     })
   });
   
-  // update likes
+  // update put like if user isn't already there
   app.put('/api/posts/like', function(req, res) {
-   Post.findByIdAndUpdate(req.body.id, {$inc: {likes: 1}}, function (err, data) {
-      if(err)
-        res.send(err);
-      res.json(data);
-   })
+     Post.findByIdAndUpdate(
+      req.body.id,
+      {$push: {"likes" :  req.body.user}},
+      function(err, post) {
+        if(err)
+          res.send(err);
+      res.json(post);
+     })
   });
+
+  // update unlike if user had already liked
+  app.put('/api/posts/unlike', function(req, res) {
+     Post.findByIdAndUpdate(
+      req.body.id,
+      {$pull: {"likes" :  req.body.user}},
+      function(err, post) {
+        if(err)
+          res.send(err);
+      res.json(post);
+     })
+  })
 
 }

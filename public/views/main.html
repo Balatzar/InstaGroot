@@ -9,6 +9,6 @@
     <div class="post-header"><h2 ng-click="goTo(post._id)">{{post.title}}</h2> by <h3><a href="/#/profile/{{post.author}}">{{post.author}}</a></h3></div>
     <img ng-click="goTo(post._id)" src="{{post.photo}}">
     <p>{{post.description}} <span ng-repeat="tag in post.tags"><a href="/#/main/search{{tag}}">{{tag}}</a><span>&nbsp</span></span></p>
-    <button style="color: red" ng-click="putLike(post)">Like {{post.likes}}</button>
+    <button style="color: red" ng-click="putLike(post)">Like {{post.likes.length}}</button>
   </div>
 </div>

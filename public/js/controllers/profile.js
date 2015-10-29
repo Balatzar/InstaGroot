@@ -35,8 +35,9 @@ function profileController($scope, postService, userService, $location, $routePa
     $location.path('/post/' + id);
   }
 
-  $scope.putLike = function(post){
-    postService.putLike({id:post._id})
+  $scope.putLike = function(post) {
+    if (post.likes.indexOf(user) == -1) {
+      postService.putLike({id:post._id, user:user})
      .success(function(data){
         for (var i = 0; i < $scope.posts.length;i++){
           if (data._id == $scope.posts[i]._id) {
@@ -44,10 +45,23 @@ function profileController($scope, postService, userService, $location, $routePa
             break;
           }
         }
-    })
-     .error(function(data){
-        console.log("error");
-     })
-  }
-  
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    } else {
+      postService.putUnlike({id:post._id, user:user})
+       .success(function(data){
+          for (var i = 0; i < $scope.posts.length;i++){
+            if (data._id == $scope.posts[i]._id) {
+              $scope.posts[i].likes = data.likes;
+              break;
+            }
+          }
+      })
+       .error(function(data){
+          console.log("error");
+       })
+    }
+  } 
 }
