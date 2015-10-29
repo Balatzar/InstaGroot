@@ -8,7 +8,6 @@ module.exports = function(app) {
   // create post
   app.post('/api/posts', function(req, res) {
     Post.create({
-      title: req.body.title,
       author: req.body.author,
       description: req.body.description,
       photo: req.body.picture,

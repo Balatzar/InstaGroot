@@ -19,13 +19,6 @@ function onePostController($scope, postService, $location, $routeParams, userSer
       console.log('Error : ' + data);
     });
 
-  $scope.papote = true;
-
-  $scope.papoto = function() {
-    $scope.textMsg = "";
-    $scope.papote = false;
-  }
-
   $scope.sendMsg = function(post) {
     dato = {};
     dato.id = post._id;
@@ -33,6 +26,7 @@ function onePostController($scope, postService, $location, $routeParams, userSer
     dato.author = user;
     postService.message(dato).then(function(data) {
       $scope.post = data.data;
+      $scope.textMsg = "";
     }, function(data) {
       console.log("error : " + data);
     })

@@ -1,23 +1,27 @@
-<p><a href="/#/edit">{{user}}</a> || <a ng-click="logout()">Logout</a></p>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user}}</a>
+  </nav>
+</div>
 
-<h1>InstaGroot</h1>
-<button class="photo"><a href="/#/post">Groot ta face !</a></button>
+<h1 class="font-satisfy">InstaGroot</h1>
 
 <div infinite-scroll='loadMore()'>
-  <div ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
+  <div class="post" ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
     <div class="post-header">
-      <h2 class="click" ng-click="goTo(post._id)">{{post.title}}</h2>
-       by
-      <h3>
-        <a href="/#/profile/{{post.author}}">{{post.author}}</a>
-      </h3>
+      <a class="post-username" href="/#/profile/{{post.author}}">{{post.author}}</a>
+      <span id="date" am-time-ago="post.created_at"></span>
     </div>
     <img class="click {{post.filter}}" ng-click="goTo(post._id)" src="{{post.photo}}">
-    <p>{{post.description}}
+    <div class="post-footer">
+      <a class="post-username" href="/#/profile/{{post.author}}">{{post.author}}</a>
+      <p>{{post.description}}</p><br>
       <span ng-repeat="tag in post.tags">
         <a href="/#/main/search{{tag}}">{{tag}}</a>
-        <span>&nbsp;</span>
       </span>
-    </p>
+    </div>
   </div> <!--NG REPEAT-->
 </div> <!--INFINITE SCROLL-->

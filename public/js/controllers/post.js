@@ -13,12 +13,10 @@ function postController($scope, postService, userService, $location) {
   $scope.jeclick = function(){
     dato.author = $scope.user;
     dato.picture = $scope.vm.picture;
-    dato.title = $scope.$$childTail.title;
     getTags($scope.$$childTail.description);
     postService.post(dato)
       .success(function(data) {
         console.log(data);
-        $scope.$$childTail.title = "";
         $scope.$$childTail.description = "";
         $location.path("/main");
       })

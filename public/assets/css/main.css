@@ -3,23 +3,49 @@ html {
 }
 
 body {
-  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.visible {
+  visibility: hidden;
+}
+
+.center {
+  width: 200px;
   margin: 0 auto;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 30px;
+.center button {
+  width: 215px;
 }
 
-nav a {
-  display: block;
+a, a:visited {
+  color: #1368a7;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-nav {
-  position: absolute;
-  right: 10%;
+a:hover {
+  color: #0d4872;
+  text-decoration: none;
+}
+
+.click {
+  cursor: pointer;
+}
+
+.font-satisfy {
+  font-family: 'Satisfy', cursive;
+  font-size: 60px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+#tag-title {
+  text-align: center;
+  color: #a5a7aa;
 }
 
 .admin p, .admin label {
@@ -30,37 +56,158 @@ nav {
   margin-top: 20px;
 }
 
-canva {
-  display: none;
+/*Header styles*/
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #eeefef;
+  width: 100%;
+  height: 80px;
+  padding-top: 25px;
 }
 
-a {
-  cursor: pointer;
+.header nav {
+  margin: 0 auto;
+  width: 740px;
 }
 
-.photo {
-  position: fixed;
-  top: 10%;
-  right: 5%;
+nav .link-main {
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+  float: left;
 }
 
-.profil {
-  position: fixed;
-  top: 15%;
-  right: 5%;
+nav .link-user {
+  float: right;
+  font-weight: 600;
 }
 
-.post-header * {
+nav .link-picto {
+  text-align: center;
+  margin-top: -18px;
   display: inline-block;
+  width: 120px;
+  height: 80px;
 }
 
-form#post input,
-form#post textarea {
+/*Camera styles*/
+.ng-camera-countdown {
+  margin: 0 auto;
+  width: 250px;
+}
+
+.ng-camera-countdown * {
+  color: #1368a7;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+#ng-camera-action,
+#ng-camera-save {
+  color: #fff;
+  background-color: #1368a7;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#ng-camera-action:hover,
+#ng-camera-save:hover {
+  color: #fff;
+  background-color: #0e5283;
+}
+
+.camera {
+  margin-top: 50px;
+}
+
+.camera p {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+form#post,
+form#post input {
+  margin: 0;
   width: 500px;
 }
 
-.click {
-  cursor: pointer;
+form#post input {
+  margin-top: -9px;
+}
+
+/*Posts style*/
+.post {
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid #edeeee;
+  border-radius: 3px;
+  margin-bottom: 60px;
+  width: 504px;
+}
+
+.post-username {
+  font-weight: 600;
+}
+
+.post-header * {
+  display: inline;
+}
+
+.post-header {
+  width: 500px;
+  height: 64px;
+  padding: 14px 20px;
+}
+
+.post-header #date {
+  color: #a5a7aa;
+  position: relative;
+  float: right;
+}
+
+.post-footer {
+  margin-top: -10px;
+  padding: 15px 24px;
+}
+
+.post-footer * {
+  display: inline;
+}
+
+.post-footer p {
+  margin-bottom: 0;
+}
+
+.post .message {
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #eeefef;
+  border-bottom: 1px solid #eeefef;
+}
+
+.post .message span {
+  display: block;
+}
+
+.post .message span * {
+  display: inline;
+}
+
+.post .papoter {
+  margin-bottom: 0;
+}
+
+.post .papoter input {
+  padding: 6px 24px 6px 24px;
+  margin-bottom: 15px;
+  border: 0;
+  width: 500px;
 }
 
 .tab {
