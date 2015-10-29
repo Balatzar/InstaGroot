@@ -1,8 +1,13 @@
-<p>User : {{user}} || <a href="/#/edit">edit settings</a> - <a ng-click="logout()">Logout</a></p>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user}}</a>
+  </nav>
+</div>
 
 <h1 class="font-satisfy">InstaGroot</h1>
-<button class="photo"><a href="/#/post">Groot ta face !</a></button>
-<button class="profil"><a href="/#/profile/{{user}}">Profil</a></button>
 
 <div infinite-scroll='loadMore()'>
   <div class="post" ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
