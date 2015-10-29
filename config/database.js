@@ -1,5 +1,5 @@
 // config/database.js
 
 module.exports = {
-  url : 'mongodb://localhost/todoyes'
+  url : process.env.MONGOLAB_URI || 'mongodb://localhost/todoyes'
 };
