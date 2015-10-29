@@ -1,9 +1,9 @@
 var User = require('../models/user.js');
 
 module.exports = function(app) {
-  
+
   /*-----USER CRUD-----*/
-  
+
     // get all users
     app.get('/api/users', function(req, res) {
     User.find(function(err, users) {
@@ -12,7 +12,7 @@ module.exports = function(app) {
       res.json(users);
     });
   });
-  
+
   // get one user
   app.get('/api/users/:username', function(req, res) {
     User.find({"username": req.params.username}, function(err, todos) {
@@ -21,7 +21,7 @@ module.exports = function(app) {
       res.json(todos);
     });
   });
-  
+
   // create user
   app.post('/api/users', function(req, res) {
     User.create({
@@ -36,7 +36,7 @@ module.exports = function(app) {
       res.status(200).end();
     });
   });
-  
+
   // delete user
   app.delete('/api/users/:user_id', function(req, res) {
     User.remove({
@@ -47,7 +47,7 @@ module.exports = function(app) {
       res.status(200).end();
     })
   });
-  
+
   // update user
   app.put('/api/users/:user_id', function(req, res){
     User.update({

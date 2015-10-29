@@ -1,10 +1,29 @@
-<a href="/#/main">Back</a>
-<h1>{{title}}</h1>
-
-
-<div ng-repeat="post in posts | orderBy: 'created_at':true">
-  <h1 class="click" ng-click="goTo(post._id)">{{post.title}}</h1>
-  <img class="click" ng-click="goTo(post._id)" src="{{post.photo}}">
-  <p>{{post.description}}<a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a></p>
-  <button style="color: red" ng-click="putLike(post)">Like {{post.likes}}</button>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user}}</a>
+  </nav>
 </div>
+
+<h1 class="font-satisfy">InstaGroot</h1>
+<h1 id="tag-title">{{title}}</h1>
+
+<div infinite-scroll='loadMore()'>
+  <div class="post" ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
+    <div class="post-header">
+      <a class="post-username" href="/#/profile/{{post.author}}">{{post.author}}</a>
+      <span id="date" am-time-ago="post.created_at"></span>
+    </div>
+    <img class="click {{post.filter}}" ng-click="goTo(post._id)" src="{{post.photo}}">
+    <div class="post-footer">
+      <a class="post-username" href="/#/profile/{{post.author}}">{{post.author}}</a>
+      <p>{{post.description}}</p><br>
+      <span ng-repeat="tag in post.tags">
+        <a href="/#/main/search{{tag}}">{{tag}}</a>
+      </span>
+    </div>
+    <button style="color: red" ng-click="putLike(post)"><i class="fa fa-heart"></i> {{post.likes.length}}</button>
+  </div> <!--NG REPEAT-->
+</div> <!--INFINITE SCROLL-->

@@ -23,6 +23,9 @@ function postService($http) {
     },
     putUnlike: function(data) {
       return $http.put('/api/posts/unlike', data);
+    },
+    message: function(data) {
+      return $http.put('/api/posts/messages', data);
     }
   }
-} 
+}
