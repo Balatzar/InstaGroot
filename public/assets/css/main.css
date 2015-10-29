@@ -56,6 +56,26 @@ a:hover {
   margin-top: 20px;
 }
 
+/*Login form*/
+
+.titre {
+  display: block;
+  margin: 10px auto;
+}
+
+.login h2 {
+  text-align: center;
+}
+
+.login input {
+  text-align: center;
+  width: 200px;
+}
+
+.login button {
+  width: 200px;
+}
+
 /*Header styles*/
 .header {
   background-color: #fff;
