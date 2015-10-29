@@ -147,4 +147,8 @@ function editController($scope, userService, postService, $location, conversatio
     $scope.password = "";
     $scope.passwordConf = "";
   }
+  
+  $scope.goTo = function(id) {
+    $location.path('/post/' + id);
+  }
 }
