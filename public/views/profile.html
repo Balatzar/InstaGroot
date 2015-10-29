@@ -9,6 +9,8 @@
 
 <h1 class="font-satisfy">InstaGroot</h1>
 
+<a href="/#/profile/{{profil}}/dm">Papoter avec {{profil}}</a>
+
 <div infinite-scroll='loadMore()'>
   <div class="post" ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
     <div class="post-header">
