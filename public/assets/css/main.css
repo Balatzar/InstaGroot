@@ -82,6 +82,11 @@ a:hover {
   width: 200px;
 }
 
+.login form {
+  width: 200px;
+  margin: 0 auto;
+}
+
 .centerify h2 {
   text-align: center;
 }

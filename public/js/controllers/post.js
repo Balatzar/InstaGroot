@@ -81,22 +81,21 @@ function postController($scope, postService, userService, $location) {
           console.log("error");
        })
     }
+  }
 
-    //Function that adds the css class for the pic filters
-    var idx = 0;
-    var filters2 = ['grayscale', 'sepia', 'blur', 'brightness',
-                  'contrast', 'hue-rotate', 'hue-rotate2',
-                  'hue-rotate3', 'saturate', 'invert', ''];
-    var filters = ['aden', 'reyes', 'perpetua', 'inkwell', 'toaster', 'walden', 'hudson', 'gingham', 'mayfair', 'lofi', 'xpro2', '_1997', 'brooklyn', ''];
+  //Function that adds the css class for the pic filters
+  var idx = 0;
+  var filters = ['grayscale', 'sepia', 'blur', 'brightness',
+                'contrast', 'hue-rotate', 'hue-rotate2',
+                'hue-rotate3', 'saturate', 'invert', ''];
 
-    $scope.filter = function() {
-      var el = document.querySelector('img');
-      el.className = '';
-      var effect = filters[idx++ % filters.length]; // loop through filters.
-      if (effect) {
-        el.classList.add(effect);
-        dato.filter = effect;
-      } else { dato.picture = ''; }
-    }
+  $scope.filter = function() {
+    var el = document.querySelector('img');
+    el.className = '';
+    var effect = filters[idx++ % filters.length]; // loop through filters.
+    if (effect) {
+      el.classList.add(effect);
+      dato.filter = effect;
+    } else { dato.picture = ''; }
   }
 }
