@@ -53,7 +53,7 @@ function editController($scope, userService, postService, $location, conversatio
     var lastMsg = [];
     var friends = [];
     if (data.length) {
-      lastMsg.push(data[0]);
+      lastMsg.push(data[data.length-1]);
       if (data[0].people[0] == user)
         friends.push(data[0].people[1]);
       else
@@ -112,7 +112,7 @@ function editController($scope, userService, postService, $location, conversatio
       vidage();
       return;
     }
-    if ($scope.username) {
+    if ($scope.$$childTail.username) {
       dato.oldUsername = localStorage.getItem("user");
       dato.username = $scope.$$childTail.username;
       postService.updateAllOne(dato)

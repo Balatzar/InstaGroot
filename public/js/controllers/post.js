@@ -81,7 +81,9 @@ function postController($scope, postService, userService, $location) {
           console.log("error");
        })
     }
+  }
 
+<<<<<<< HEAD
     //Function that adds the css class for the pic filters
     var idx = 0;
     var filters = ['grayscale', 'sepia', 'blur', 'brightness',
@@ -91,14 +93,13 @@ function postController($scope, postService, userService, $location) {
                     'toaster', 'walden', 'hudson', 'gingham',
                     'mayfair', 'lofi', 'xpro2', '_1997', 'brooklyn', ''];
 
-    $scope.filter = function() {
-      var el = document.querySelector('img');
-      el.className = '';
-      var effect = filters[idx++ % filters.length]; // loop through filters.
-      if (effect) {
-        el.classList.add(effect);
-        dato.filter = effect;
-      } else { dato.picture = ''; }
-    }
+  $scope.filter = function() {
+    var el = document.querySelector('img');
+    el.className = '';
+    var effect = filters[idx++ % filters.length]; // loop through filters.
+    if (effect) {
+      el.classList.add(effect);
+      dato.filter = effect;
+    } else { dato.picture = ''; }
   }
 }

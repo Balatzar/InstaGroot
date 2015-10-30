@@ -7,6 +7,7 @@ function convController($scope, conversationService, userService, $location, $ro
   }
 
   var user = localStorage.getItem("user");
+  $scope.user = user;
   var userInUrl = $routeParams.conv;
   var dato = {};
   $scope.title = "Papotage avec " + userInUrl;
