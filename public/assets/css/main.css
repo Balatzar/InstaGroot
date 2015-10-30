@@ -103,6 +103,13 @@ a:hover {
   width: 100%;
   height: 80px;
   padding-top: 25px;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+
+.under-hearder {
+  height: 80px;
 }
 
 .header nav {
