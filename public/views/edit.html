@@ -26,17 +26,12 @@
   </div>
 
   <form ng-submit="askPassword()"ng-show="okPassword">
-    <input type="password" placeholder="password" ng-model="askPass">
+    <input style="width: 215px" type="password" placeholder="password" ng-model="askPass">
     <button type="submit">OK</button>
   </form>
 
   <div ng-hide="editing" class="login">
     <form ng-hide="log" ng-submit="editUser()">
-      <input type="text" placeholder="username : {{user[0].username}}"
-                ng-model="username"
-                ng-minlength="3"
-                ng-maxlength="20"
-                >
 
       <input type="password" placeholder="Nouveau password"
                 ng-model="password"
