@@ -83,7 +83,6 @@ function postController($scope, postService, userService, $location) {
     }
   }
 
-<<<<<<< HEAD
     //Function that adds the css class for the pic filters
     var idx = 0;
     var filters = ['grayscale', 'sepia', 'blur', 'brightness',
