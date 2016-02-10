@@ -1,27 +1,38 @@
-<p>User : {{user}} || <a href="/#/edit">edit settings</a> - <a ng-click="logout()">Logout</a></p>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user}}</a>
+  </nav>
+</div>
 
-<ng-camera
-  capture-message="Cheeeese!"
-  countdown="1"
-  output-height="500"
-  output-width="888"
-  viewer-height="500"
-  viewer-width="888"
-  crop-height="500"
-  crop-width="500"
-  image-format="jpeg"
-  jpeg-quality="100"
-  action-message="Take picture"
-  snapshot="vm.picture"
-  flash-fallback-url="/vendors/webcamjs/webcam.swf"
-></ng-camera>
+<h1 class="font-satisfy">InstaGroot</h1>
 
-<form id="post" ng-if="vm.picture" ng-submit="jeclick()">
-  <input type="text" placeholder="Titre" 
-         ng-model="title"
-         pattern=".{2,20}"
-         required title="entre 2 et 20 miaous">
-  <img ng-src="{{vm.picture}}" alt="webcam picture">
-  <input type="text" placeholder="Description" ng-model="description">
-  <button type="submit">sauvegarder</button>
-</form>
+<div class="post">
+  <ng-camera
+    capture-message="Groooot!"
+    countdown="3"
+    output-height="500"
+    output-width="888"
+    viewer-height="500"
+    viewer-width="888"
+    crop-height="500"
+    crop-width="500"
+    image-format="jpeg"
+    jpeg-quality="100"
+    action-message="Take picture"
+    snapshot="vm.picture"
+    flash-fallback-url="/vendors/webcamjs/webcam.swf"
+  ></ng-camera>
+</div>
+
+<h1 id="tag-title">result</h1>
+<div class="post camera" ng-if="vm.picture">
+  <p>click on picture to add filters</p>
+  <form id="post" ng-submit="jeclick()">
+    <img ng-click="filter()" id="vmPic" ng-src="{{vm.picture}}" alt="webcam picture">
+    <input type="text" placeholder="Description..." ng-model="description">
+    <button id="ng-camera-save" type="submit">Save</button>
+  </form>
+</div>

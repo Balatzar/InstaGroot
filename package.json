@@ -1,15 +1,15 @@
 {
-  "name": "todo-yes",
+  "name": "instagroot",
   "version": "0.0.0",
-  "description": "Essai de faisage d'une app MEAN",
+  "description": "Instagram pour les arbres",
   "main": "server.js",
-  "author": "scotch",
+  "author": "groot",
   "dependencies": {
     "body-parser": "~1.5.2",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
     "moment": "^2.10.6",
-    "mongoose": "~3.6.2",
+    "mongoose": "~4.2.3",
     "morgan": "~1.2.2"
   }
 }

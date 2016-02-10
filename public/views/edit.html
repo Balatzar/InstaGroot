@@ -1,51 +1,96 @@
-<a href="/#/main">Back</a> - <a ng-click="logout()">Logout</a>
-<h1>InstaGroot</h1>
-
-<div ng-show="editing">
-  <div>username : {{user[0].username}}</div>
-  <div>name : {{user[0].name}}</div>
-  <div>lastname : {{user[0].lastname}}</div>
-  <button ng-click="change()">edito</button>
+<div class="header">
+  <nav>
+    <a class="link-main" href="/#/">InstaGroot</a>
+    <a class="link-picto" href="/#/post"><i class="fa fa-camera-retro fa-2x"></i><br>Groot ta face !</a>
+    <a class="link-picto" ng-click="logout()"><i class="fa fa-sign-out fa-2x"></i><br>Logout</a>
+    <a class="link-user" href="/#/edit">{{user[0].username}}</a>
+  </nav>
 </div>
 
-<form ng-submit="askPassword()"ng-show="okPassword">
-  <input type="password" placeholder="password" ng-model="askPass">
-  <button type="submit">OK</button>
-</form>
+<h1 class="font-satisfy">InstaGroot</h1>
 
-<div ng-hide="editing">
-  <form ng-hide="log" ng-submit="editUser()">
-    <input type="text" placeholder="username : {{user[0].username}}" 
-              ng-model="username"
-              ng-minlength="3"
-              ng-maxlength="20"
-              >
+<div class="center">
 
-    <input type="password" placeholder="Nouveau password" 
-              ng-model="password"
-              ng-minlength="6"
-              ng-maxlength="20"
-              >
+<div class="tab edit" ng-click="changeTab(1)">Editer</div>
+<div class="tab messages active" ng-click="changeTab(2)">Messages</div>
+<div class="tab flux" ng-click="changeTab(3)">Photos</div>
 
-    <input type="password" placeholder="confirm password" 
-              ng-model="passwordConf"
-              ng-minlength="6"
-              ng-maxlength="20"
-              >
+<button class="photo"><a href="/#/post">Groot ta face !</a></button>
 
-    <input type="text" placeholder="name : {{user[0].name}}" 
-              ng-model="name"
-              ng-minlength="3"
-              ng-maxlength="20"
-              >
+<div ng-if="tab == 1">
+  <div ng-show="editing">
+    <div>username : {{user[0].username}}</div>
+    <div>name : {{user[0].name}}</div>
+    <div>lastname : {{user[0].lastname}}</div>
+    <button ng-click="change()">edito</button>
+  </div>
 
-    <input type="password" placeholder="lastname : {{user[0].lastname}}" 				  
-               ng-model="lastname"
-              ng-minlength="3"
-              ng-maxlength="20"
-              >
-    <button type="submit">envoyado</button>
+  <form ng-submit="askPassword()"ng-show="okPassword">
+    <input type="password" placeholder="password" ng-model="askPass">
+    <button type="submit">OK</button>
   </form>
+
+  <div ng-hide="editing">
+    <form ng-hide="log" ng-submit="editUser()">
+      <input type="text" placeholder="username : {{user[0].username}}"
+                ng-model="username"
+                ng-minlength="3"
+                ng-maxlength="20"
+                >
+
+      <input type="password" placeholder="Nouveau password"
+                ng-model="password"
+                ng-minlength="6"
+                ng-maxlength="20"
+                >
+
+      <input type="password" placeholder="confirm password"
+                ng-model="passwordConf"
+                ng-minlength="6"
+                ng-maxlength="20"
+                >
+
+      <input type="text" placeholder="name : {{user[0].name}}"
+                ng-model="name"
+                ng-minlength="3"
+                ng-maxlength="20"
+                >
+
+      <input type="password" placeholder="lastname : {{user[0].lastname}}"
+                 ng-model="lastname"
+                ng-minlength="3"
+                ng-maxlength="20"
+                >
+      <button type="submit">envoyado</button>
+    </form>
+  </div>
 </div>
 
-<button class="photo"><a href="/#/post">Groot ta face !</a></button
+
+<div ng-if="tab == 2">
+  <div ng-repeat="msg in lastMsg | orderBy: 'created_at':true">
+    <h3>Papoti entre {{msg.people[0]}} et {{msg.people[1]}}</h3>
+    <p>Dernier message :</p>
+    <h4>{{msg.messages[0].author}}</h4>
+    <p>{{msg.messages[0].text}}</p>
+    <a href="/#/edit/{{msg.people[0]}}" ng-if="msg.people[0] != user[0].username">Voir le reste de la conv</a>
+    <a href="/#/edit/{{msg.people[1]}}" ng-if="msg.people[1] != user[0].username">Voir le reste de la conv</a>
+  </div>
+</div>
+
+
+<div ng-if="tab == 3">
+  <div infinite-scroll='loadMore()'>
+  <div ng-repeat="post in posts | orderBy: 'created_at':true | limitTo:limit">
+    <div class="post-header">
+      <h2 class="click" ng-click="goTo(post._id)">{{post.title}}</h2> by <h3>
+        <a href="/#/profile/{{post.author}}">{{post.author}}</a>
+      </h3>
+    </div>
+    <img class="click" ng-click="goTo(post._id)" src="{{post.photo}}">
+    <p>{{post.description}}
+      <a href="/#/main/search{{tag}}" ng-repeat="tag in post.tags"> {{tag}}</a>
+    </p>
+  </div>
+</div>
+</div>
